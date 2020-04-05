@@ -7,5 +7,10 @@ TO DO
 4. User Management (Free User, Premium User)
 
 ## Cara Install
+git clone https://github.com/jalusatriiaa/tryout.git
+
 
 ## Cara Deploy
+1. Taruh ke htdocs di folder xampp
+2. Jalankan XAMPP run Apache and MySQL
+3. localhost/stan
