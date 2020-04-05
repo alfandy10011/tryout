@@ -1,22 +1,17 @@
-<?php if( $this->ion_auth->is_admin() ) : ?>
-<div class="row">
-    <?php foreach($info_box as $info) : ?>
-    <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-<?=$info->box?>">
-        <div class="inner">
-            <h3><?=$info->total;?></h3>
-            <p><?=$info->title;?></p>
-        </div>
-        <div class="icon">
-            <i class="fa fa-<?=$info->icon?>"></i>
-        </div>
-        <a href="<?=base_url().strtolower($info->title);?>" class="small-box-footer">
-            More info <i class="fa fa-arrow-circle-right"></i>
-        </a>
+<?php if( $this->session->flashdata('flash') ) : ?>
+    <div class="row mt-3">
+        <div class="col md-6">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                Profil <strong>Berhasil </strong> <?= $this->session->flashdata('flash');?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
     </div>
-    <?php endforeach; ?>
-</div>
+<?php endif; ?>
+
+<?php if( $this->ion_auth->is_admin() ) : ?>
 
 <?php elseif( $this->ion_auth->in_group('dosen') ) : ?>
 
@@ -79,12 +74,12 @@
 
 <div class="row">
     <div class="col-sm-4">
-        <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title">Informasi Akun</h3>
-                <a class="btn btn-success btn-xs ml-auto" href="<?=base_url('profil/edit')?>"> Edit Profil </a>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex animated fadeIn slow">
+                <h5>Informasi Akun</h5>
+                <a class="btn btn-success btn-sm ml-auto" href="<?=base_url('profil/edit')?>"> Edit Profil </a>
             </div>
-            <table class="table table-hover">
+            <table class="table table-striped animated fadeIn slow">
                 <tr>
                     <th>ID</th>
                     <td><?=$mahasiswa->nim?></td>
@@ -117,11 +112,11 @@
         </div>
     </div>
     <div class="col-sm-8">
-        <div class="box box-solid">
-            <div class="box-header bg-purple">
+        <div class="card shadow mb-4 animated fadeIn slow">
+            <div class="card-header py-3">
                 <h3 class="box-title">Petunjuk Pengerjaan Tryout</h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <p>Petunjuk teknis pengerjaan Tryout SPMB PKN STAN</p>
                 <ul class="pl-4">
                     <li>Jenis Ujian terdiri dari TPA, TBI, SKD (TWK, TIU, TKP)</li>

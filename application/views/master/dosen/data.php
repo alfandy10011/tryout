@@ -1,17 +1,13 @@
-<div class="box">
-    <div class="box-header with-border">
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
         <h3 class="box-title">Master <?= $subjudul ?></h3>
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-        </div>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <div class="mt-2 mb-4">
-            <a href="<?= base_url('dosen/add') ?>" class="btn btn-sm bg-purple btn-flat"><i class="fa fa-plus"></i> Tambah Data</a>
+            <a href="<?= base_url('dosen/add') ?>" class="btn btn-sm bg-purple btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
             <a href="<?= base_url('dosen/import') ?>" class="btn btn-sm btn-flat btn-success"><i class="fa fa-upload"></i> Import</a>
-            <button type="button" onclick="reload_ajax()" class="btn btn-sm btn-default btn-flat"><i class="fa fa-refresh"></i> Reload</button>
-            <div class="pull-right">
+            <button type="button" onclick="reload_ajax()" class="btn btn-sm btn-info btn-flat"><i class="fa fa-refresh"></i> Reload</button>
+            <div class="float-right">
                 <button onclick="bulk_delete()" class="btn btn-sm btn-danger btn-flat" type="button"><i class="fa fa-trash"></i> Delete</button>
             </div>
         </div>

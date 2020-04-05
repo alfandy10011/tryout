@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container animated fadeIn slow">
     <h2 class="text-center">Evaluasi Hasil</h2>
     <h3 class="text-center">Nama : 
     <?php  

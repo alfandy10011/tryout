@@ -81,11 +81,19 @@ class Soal_model extends CI_Model {
         return $this->db->get()->row();
     }
 
-    public function getSoalPembahasan($id){
+    public function getSoalPembahasan($id, $limit, $start){
         $this->db->select('*');
         $this->db->from('tb_soal');
         $this->db->where('matkul_id', $id);
-        return $this->db->get()->row();
+        return $this->db->limit($limit, $start)->get()->result();
+    }
+
+    public function jumlahPembahasan($id){
+        $this->db->select('*');
+        $this->db->from('tb_soal');
+        $this->db->where('matkul_id', $id);
+
+        return $this->db->get()->num_rows();
     }
 
 }

@@ -19,12 +19,48 @@ class Profil extends CI_Controller{
 
     }
 
+    public function index(){
+
+        $mhs		    = $this->mhs;
+        $id_mhs = $mhs->id_mahasiswa;
+        $pilihan = $this->ujian->getPrediksiKelulusan($mhs->id_mahasiswa)->row();
+            
+        $pilihan_1 = $pilihan->pilihan_1;
+		$pilihan_2 = $pilihan->pilihan_2;
+		$pilihan_3 = $pilihan->pilihan_3;
+
+			// Show Nama
+		$get_nama1 = $this->ujian->showProdiPilihan($pilihan_1)->nama_prodi;
+		$get_nama2 = $this->ujian->showProdiPilihan($pilihan_2)->nama_prodi;
+		$get_nama3 = $this->ujian->showProdiPilihan($pilihan_3)->nama_prodi;
+
+        $data = [
+			'user' => $this->ion_auth->user()->row(),
+			'judul'	=> 'Profil',
+            'subjudul'=> '',
+            'profil'    => $this->profil->editProfil($id_mhs),
+            'pilihan_1' => $get_nama1,
+			'pilihan_2' => $get_nama2,
+			'pilihan_3' => $get_nama3,
+        ];
+
+        $this->load->view('_templates/dashboard/_header.php', $data);
+		$this->load->view('profil/index', $data);
+		$this->load->view('_templates/dashboard/_footer.php');
+    }
+
     public function Edit(){
+
+        $mhs		    = $this->mhs;
+        $id_mhs = $mhs->id_mahasiswa;
+
         $data = [
 			'user' => $this->ion_auth->user()->row(),
 			'judul'	=> 'Edit Profil',
             'subjudul'=> '',
             'profil'    => $this->profil->editProdiPilihan(),
+            'identitas' => $this->profil->editProfil($id_mhs),
+            'tampil_prodi'  => $this->profil->tampilProdi($id_mhs),
         ];
         
         $this->load->view('_templates/dashboard/_header.php', $data);
@@ -53,8 +89,8 @@ class Profil extends CI_Controller{
         ];
 
         $this->master->update('mahasiswa', $input, 'id_mahasiswa', $id_mhs);
-
-        return redirect()->to('dashboard');
+        $this->session->set_flashdata('flash', 'Diubah');
+        redirect('dashboard');
     }
 }
 

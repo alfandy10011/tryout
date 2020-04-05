@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row justify-content-center">
     <?php if($this->ion_auth->is_admin()) : ?>
     <div class="col-sm-12 mb-4">
         <a href="<?=base_url('users')?>" class="btn btn-default">
@@ -108,10 +108,6 @@
         <div class="box box-warning">
             <div class="box-header with-border">
                 <h3 class="box-title">Ubah Password</h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                </div>
             </div>
             <div class="box-body pb-0">
                 <div class="form-group">
@@ -131,10 +127,10 @@
                 </div>
             </div>
             <div class="box-footer">
-                <button type="reset" class="btn btn-flat btn-default">
+                <button type="reset" class="btn btn-flat btn-warning">
                     <i class="fa fa-rotate-left"></i> Reset
                 </button>
-                <button type="submit" id="btn-pass" class="btn btn-flat btn-warning">Ganti Password</button>            
+                <button type="submit" id="btn-pass" class="btn btn-flat btn-success">Ganti Password</button>            
             </div>
         </div>
     </div>

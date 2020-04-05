@@ -1,14 +1,10 @@
-<div class="box box-danger box-solid">
-    <div class="box-header">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
         <h3 class="box-title">
             Kosongkan Table
         </h3>
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-        </div>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <p>
             Semua data akan dihapus kecuali akun admin.
         </p>

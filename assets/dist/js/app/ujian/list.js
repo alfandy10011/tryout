@@ -7,11 +7,11 @@ $(document).ready(function () {
     table = $("#ujian").DataTable({
         initComplete: function () {
             var api = this.api();
-            $('#ujian_filter input')
-                .off('.DT')
-                .on('keyup.DT', function (e) {
-                    api.search(this.value).draw();
-                });
+            // $('#ujian_filter input')
+            //     .off('.DT')
+            //     .on('keyup.DT', function (e) {
+            //         api.search(this.value).draw();
+            //     });
         },
         oLanguage: {
             sProcessing: "loading..."
@@ -23,14 +23,8 @@ $(document).ready(function () {
             "type": "POST",
         },
         columns: [
-            {
-                "data": "id_ujian",
-                "orderable": false,
-                "searchable": false
-            },
             { "data": 'nama_ujian' },
             { "data": 'jumlah_soal' },
-            { "data": 'waktu' },
             { "data": 'token'},
             {
                 "searchable": false,
@@ -39,7 +33,7 @@ $(document).ready(function () {
         ],
         columnDefs: [
             {
-                "targets": 5,
+                "targets": 4,
                 "data": {
                     "id_ujian": "id_ujian",
                     "ada": "ada"
@@ -73,12 +67,12 @@ $(document).ready(function () {
         rowId: function (a) {
             return a;
         },
-        rowCallback: function (row, data, iDisplayIndex) {
-            var info = this.fnPagingInfo();
-            var page = info.iPage;
-            var length = info.iLength;
-            var index = page * length + (iDisplayIndex + 1);
-            $('td:eq(0)', row).html(index);
-        }
+        // rowCallback: function (row, data, iDisplayIndex) {
+        //     var info = this.fnPagingInfo();
+        //     var page = info.iPage;
+        //     var length = info.iLength;
+        //     var index = page * length + (iDisplayIndex + 1);
+        //     $('td:eq(0)', row).html(index);
+        // }
     });
 });

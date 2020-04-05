@@ -1,5 +1,5 @@
-<div class="box">
-    <div class="box-header with-border">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
         <h3 class="box-title">Form <?=$judul?></h3>
         <div class="box-tools pull-right">
             <a href="<?=base_url()?>jurusanmatkul" class="btn btn-warning btn-flat btn-sm">
@@ -7,8 +7,8 @@
             </a>
         </div>
     </div>
-    <div class="box-body">
-        <div class="row">
+    <div class="card-body">
+        <div class="row justify-content-center">
             <div class="col-sm-4">
                 <div class="alert bg-purple">
                     <h4><i class="fa fa-info-circle"></i> Informasi</h4>
@@ -38,11 +38,11 @@
                     </select>
                     <small class="help-block text-right"></small>
                 </div>
-                <div class="form-group pull-right">
-                    <button type="reset" class="btn btn-flat btn-default">
+                <div class="form-group float-right">
+                    <button type="reset" class="btn btn-flat btn-info">
                         <i class="fa fa-rotate-left"></i> Reset
                     </button>
-                    <button id="submit" type="submit" class="btn btn-flat bg-purple">
+                    <button id="submit" type="submit" class="btn btn-success bg-purple">
                         <i class="fa fa-save"></i> Simpan
                     </button>
                 </div>

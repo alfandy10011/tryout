@@ -210,7 +210,7 @@ function selesai() {
         success: function (r) {
             console.log(r);
             if (r.status) {
-                window.location.href = base_url + 'ujian/list';
+                window.location.href = base_url + 'ujian/daftar_to';
             }
         }
     });

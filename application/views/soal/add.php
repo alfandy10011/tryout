@@ -1,16 +1,12 @@
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-sm-12">    
         <?=form_open_multipart('soal/save', array('id'=>'formsoal'), array('method'=>'add'));?>
-        <div class="box">
-            <div class="box-header with-border">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
                 <h3 class="box-title"><?=$subjudul?></h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                </div>
             </div>
-            <div class="box-body">
-                <div class="row">
+            <div class="card-body">
+                <div class="row justify-content-center">
                     <div class="col-sm-8 col-sm-offset-2">
                         <div class="form-group col-sm-12">
                             <label>Dosen (Mata Kuliah)</label>
@@ -93,9 +89,9 @@
                                 <small class="help-block" style="color: #dc3545"><?=form_error('pembahasan')?></small>
                             </div>
                         </div>
-                        <div class="form-group pull-right">
-                            <a href="<?=base_url('soal')?>" class="btn btn-flat btn-default"><i class="fa fa-arrow-left"></i> Batal</a>
-                            <button type="submit" id="submit" class="btn btn-flat bg-purple"><i class="fa fa-save"></i> Simpan</button>
+                        <div class="form-group text-center">
+                            <a href="<?=base_url('soal')?>" class="btn btn-warning btn-default"><i class="fa fa-arrow-left"></i> Batal</a>
+                            <button type="submit" id="submit" class="btn btn-success bg-purple"><i class="fa fa-save"></i> Simpan</button>
                         </div>
                     </div>
                 </div>

@@ -1,15 +1,11 @@
-<div class="box">
-    <div class="box-header with-border">
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
         <h3 class="box-title"><?=$subjudul?></h3>
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-        </div>
     </div>
-    <div class="box-body">
+    <div class="card-body">
 		<div class="row">
         	<div class="col-sm-4">
-				<button type="button" onclick="bulk_delete()" class="btn btn-flat btn-sm bg-red"><i class="fa fa-trash"></i> Bulk Delete</button>
+				<button type="button" onclick="bulk_delete()" class="btn btn-danger btn-sm bg-red"><i class="fa fa-trash"></i> Bulk Delete</button>
 			</div>
 			<div class="form-group col-sm-4 text-center">
 				<?php if ( $this->ion_auth->is_admin() ) : ?>
@@ -25,9 +21,9 @@
 				<?php endif; ?>
 			</div>
 			<div class="col-sm-4">
-				<div class="pull-right">
-					<a href="<?=base_url('soal/add')?>" class="btn bg-purple btn-flat btn-sm"><i class="fa fa-plus"></i> Buat Soal</a>
-					<button type="button" onclick="reload_ajax()" class="btn btn-flat btn-sm bg-maroon"><i class="fa fa-refresh"></i> Reload</button>
+				<div class="float-right">
+					<a href="<?=base_url('soal/add')?>" class="btn bg-purple btn-primary btn-sm"><i class="fa fa-plus"></i> Buat Soal</a>
+					<button type="button" onclick="reload_ajax()" class="btn btn-warning btn-sm bg-maroon"><i class="fa fa-refresh"></i> Reload</button>
 				</div>
 			</div>
 		</div>

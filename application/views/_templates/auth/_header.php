@@ -3,14 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Siap Tryout</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/AdminLTE.min.css">
-	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/mystyle.css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/style.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/plugins/iCheck/square/blue.css">
+    <title>Siap Tryout</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

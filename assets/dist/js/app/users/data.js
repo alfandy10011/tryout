@@ -75,11 +75,11 @@ $(document).ready(function() {
                 render: function(data, type, row, meta) {
                     if (data === "1") {
                         return `<div class="text-center">
-                                <span class="badge bg-green">Active</span>
+                                <span class="badge bg-success">Active</span>
                             </div>`;
                     } else {
                         return `<div class="text-center">
-                                <span class="badge bg-red">Not Active</span>
+                                <span class="badge bg-danger">Not Active</span>
                             </div>`;
                     }
                 }
@@ -97,7 +97,7 @@ $(document).ready(function() {
                     } else {
                         return `<div class="text-center">
                                 <a class="btn btn-xs btn-warning" href="${base_url}users/edit/${data}">
-                                    <i class="fa fa-pencil"></i>
+                                    <i class="fa fa-pen"></i>
                                 </a>
                                 <button type="button" class="btn btn-xs btn-danger" onclick="hapus(${data})">
                                     <i class="fa fa-trash"></i>

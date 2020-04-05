@@ -1,20 +1,16 @@
-<div class="box">
-    <div class="box-header with-border">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
         <h3 class="box-title">Form <?=$judul?></h3>
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-        </div>
     </div>
-    <div class="box-body">
-        <div class="row">
-            <div class="col-sm-offset-3 col-sm-6 col-lg-offset-4 col-lg-4">        
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-sm-6">     
                 <div class="my-4">
                     <div class="form-horizontal form-inline">
-                        <a href="<?=base_url('jurusan')?>" class="btn btn-default btn-xs">
+                        <a href="<?=base_url('jurusan')?>" class="btn btn-info btn-xs">
                             <i class="fa fa-arrow-left"></i> Batal
                         </a>
-                        <div class="pull-right">
+                        <div class="ml-auto">
                             <span> Jumlah : </span><label for=""><?=$banyak?></label>
                         </div>
                     </div>
@@ -30,7 +26,7 @@
                     <tbody id="inputs">
                     </tbody>
                 </table>
-                <button type="submit" class="mb-4 btn btn-block bg-purple btn-flat">
+                <button type="submit" class="mb-4 btn btn-block btn-success">
                     <i class="fa fa-save"></i> Simpan
                 </button>
                 <?=form_close()?>

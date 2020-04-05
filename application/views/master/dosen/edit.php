@@ -1,6 +1,6 @@
 <?=form_open('dosen/save', array('id'=>'formdosen'), array('method'=>'edit', 'id_dosen'=>$data->id_dosen));?>
-<div class="box">
-    <div class="box-header with-border">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
         <h3 class="box-title">Form <?=$subjudul?></h3>
         <div class="box-tools pull-right">
             <a href="<?=base_url()?>dosen" class="btn btn-sm btn-flat btn-warning">
@@ -8,8 +8,8 @@
             </a>
         </div>
     </div>
-    <div class="box-body">
-        <div class="row">
+    <div class="card-body">
+        <div class="row justify-content-center">
             <div class="col-sm-4 col-sm-offset-4">
                 <div class="form-group">
                     <label for="nip">NIP</label>
@@ -36,11 +36,11 @@
                     </select>
                     <small class="help-block"></small>
                 </div>
-                <div class="form-group pull-right">
-                    <button type="reset" class="btn btn-flat btn-default">
+                <div class="form-group float-right">
+                    <button type="reset" class="btn btn-flat btn-info">
                         <i class="fa fa-rotate-left"></i> Reset
                     </button>
-                    <button type="submit" id="submit" class="btn btn-flat bg-purple">
+                    <button type="submit" id="submit" class="btn btn-flat btn-primary">
                         <i class="fa fa-pencil"></i> Update
                     </button>
                 </div>

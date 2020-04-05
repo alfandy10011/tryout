@@ -239,10 +239,11 @@ class Ujian extends CI_Controller {
 		$this->load->view('_templates/dashboard/_footer.php');
 	}
 
-	public function list()
+	public function list($id)
 	{
 		$this->akses_mahasiswa();
 
+		$ujian = $this->ujian->getListUjian($this->mhs->id_mahasiswa, $this->mhs->kelas_id, $id);
 		$user = $this->ion_auth->user()->row();
 
 		$data = [
@@ -250,6 +251,7 @@ class Ujian extends CI_Controller {
 			'judul'		=> 'Tryout',
 			'subjudul'	=> 'Daftar Tryout',
 			'mhs' 		=> $this->ujian->getIdMahasiswa($user->username),
+			'ujian'		=> $ujian,
 			// 'nilai'		=> 
 			// 'hasil'		=> $this->ujian->HslUjian($id, $mhs->id_mahasiswa)->row(),
 			// 'ujian'		=> $this->ujian->getUjianById($id)
@@ -280,23 +282,61 @@ class Ujian extends CI_Controller {
 		$this->load->view('_templates/dashboard/_footer.php');
 	}
 
-	public function pembahasan($id)
+	public function pembahasan($id){
 
+		$this->load->library('pagination');
 
-	{
+		// Config
+		$config['base_url']	= ' http://localhost/stan/ujian/pembahasan/'.$id;
+		$config['total_rows']	=	$this->soal->jumlahPembahasan($id);
+		$config['per_page']	=	10;
+
+		// Styling
+		$config['full_tag_open']	=	'<nav> <ul class="pagination pagination-lg justify-content-center">';
+		$config['full_tag_close']	=	'</ul> </nav>';
+		
+		$config['first_link']	=	'First';
+		$config['first_tag_open']	=	'<li class="page-item">';
+		$config['first_tag_close']	=	'</li>';
+
+		$config['last_link']	=	'Last';
+		$config['last_tag_open']	=	'<li class="page-item">';
+		$config['last_tag_close']	=	'</li>';
+		
+		$config['next_link']	=	'&raquo';
+		$config['next_tag_open']	=	'<li class="page-item">';
+		$config['next_tag_close']	=	'</li>';
+		
+		$config['prev_link']	=	'&laquo';
+		$config['prev_tag_open']	=	'<li class="page-item">';
+		$config['prev_tag_close']	=	'</li>';
+		// Init
+		$config['cur_tag_open']	=	'<li class="page-item active"><a class="page-link" href="#"> ';
+		$config['cur_tag_close']	= '</a> </li>';
+		
+		$config['num_tag_open']	=	'<li class="page-item">';
+		$config['num_tag_close']	=	'</li>';
+
+		$config['attributes']	= array('class' =>	'page-link');
+		
+		$this->pagination->initialize($config);
+		
+		$data['start']	= $this->uri->segment(4);
 		$data = [
 			'user' => $this->ion_auth->user()->row(),
+			'start'	=> $this->uri->segment(4),
 			'judul'	=> 'Pembahasan',
 			'subjudul'=> '',
-			'datum'	
+			'pembahasan'	=> $this->soal->getSoalPembahasan($id, $config['per_page'], $data['start']),	
 		];
 		
 
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('ujian/pembahasan', $data);
 		$this->load->view('_templates/dashboard/_footer.php');
+
 	}
-	
+
 	public function token($id)
 	{
 		$this->akses_mahasiswa();
@@ -475,7 +515,6 @@ class Ujian extends CI_Controller {
 		// $dump_id_to = $this->soal->getIdTryoutById(91);
 		// $ambil_id_to = $dump_id_to->id_tryout;
 		// var_dump($ambil_id_to);
-		var_dump($check_mhs);
 		// $num = $check_mhs->id_mahasiswa;
 		if (!empty($soal_urut_ok)) {
 			foreach ($soal_urut_ok as $s) {

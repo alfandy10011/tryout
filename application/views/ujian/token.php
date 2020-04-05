@@ -1,7 +1,3 @@
-<div class="callout callout-info">
-    <h4>Peraturan Ujian!</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime minus dolores accusantium fugiat debitis modi voluptates non consequuntur nemo expedita nihil laudantium commodi voluptatum voluptatem molestiae consectetur incidunt animi, qui exercitationem? Nisi illo, magnam perferendis commodi consequuntur impedit, et nihil excepturi quas iste cum sunt debitis odio beatae placeat nemo..</p>
-</div>
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Konfirmasi Data</h3>
@@ -16,24 +12,12 @@
                         <td><?=$mhs->nama?></td>
                     </tr>
                     <tr>
-                        <th>Dosen</th>
-                        <td><?=$ujian->nama_dosen?></td>
-                    </tr>
-                    <tr>
-                        <th>Kelas/Jurusan</th>
-                        <td><?=$mhs->nama_kelas?> / <?=$mhs->nama_jurusan?></td>
-                    </tr>
-                    <tr>
                         <th>Nama Ujian</th>
                         <td><?=$ujian->nama_ujian?></td>
                     </tr>
                     <tr>
                         <th>Jumlah Soal</th>
                         <td><?=$ujian->jumlah_soal?></td>
-                    </tr>
-                    <tr>
-                        <th>Waktu</th>
-                        <td><?=$ujian->waktu?> Menit</td>
                     </tr>
                     <tr>
                         <th>Terlambat</th>
@@ -80,7 +64,7 @@
                         <?php else : ?>
                         <div class="callout callout-danger">
                             Waktu untuk menekan tombol <strong>"MULAI"</strong> sudah habis.<br/>
-                            Silahkan hubungi dosen anda untuk bisa mengikuti ujian pengganti.
+                            
                         </div>
                         <?php endif;?>
                     </div>

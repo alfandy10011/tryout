@@ -1,14 +1,11 @@
 <!-- <h2> Real time ranking sedang dalam perbaikan, ranking nasional akan diumumkan di Instagram @ambiseducation setelah tryout berakhir</h2> -->
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><?=$subjudul?></h3>
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-        </div>
+<div class="card animated fadeIn slow shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Ranking Nasional</h6>
     </div>
-    <div class="table-responsive px-4 pb-3" style="border: 0">
-        <table id="detail_hasil" class="w-100 table table-striped table-bordered table-hover">
+    <div class="card-body animated fadeIn slow">
+    <div class="table-responsive">
+    <table class="table table-bordered" id="detail_hasil" width="100%" cellspacing="0">
         <thead>
             <tr>
                 <th>No.</th>
@@ -37,6 +34,7 @@
         </tfoot>
         </table>
     </div>
+</div>
 </div>
 
 <script type="text/javascript">

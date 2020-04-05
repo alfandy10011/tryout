@@ -74,7 +74,7 @@ $(document).ready(function() {
         data: "id_soal",
         render: function(data, type, row, meta) {
           return `<div class="text-center">
-                                <a href="${base_url}soal/detail/${data}" class="btn btn-xs btn-default">
+                                <a href="${base_url}soal/detail/${data}" class="btn btn-xs btn-info">
                                     <i class="fa fa-eye"></i> Detail
                                 </a>
                                 <a href="${base_url}soal/edit/${data}" class="btn btn-xs btn-warning">

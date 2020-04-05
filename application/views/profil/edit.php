@@ -7,12 +7,12 @@
                 <?=form_open('profil/editProfil')?>
                 <div class="form-group">
                     <label for="nama_lengkap">Nama</label>
-                    <input placeholder="Nama Lengkap" type="text" class="form-control" name="nama_lengkap">
+                    <input placeholder="Nama Lengkap" type="text" class="form-control" name="nama_lengkap" value="<?= ($identitas->nama) ?>">
                     <small class="help-block"></small>
                 </div>
                 <div class="form-group">
                     <label for="asal_sekolah">Asal Sekolah</label>
-                    <input autofocus="autofocus" onfocus="this.select()" placeholder="Asal Sekolah" type="text" class="form-control" name="asal_sekolah">
+                    <input autofocus="autofocus" onfocus="this.select()" placeholder="Asal Sekolah" type="text" class="form-control" name="asal_sekolah" value="<?= ($identitas->sekolah) ?>">
                     <small class="help-block"></small>
                 </div>
                 <div class="form-group">
@@ -51,11 +51,11 @@
                     </select>
                     <small class="help-block"></small>
                 </div>
-                <div class="form-group pull-right">
-                    <button type="reset" class="btn btn-default btn-flat">
+                <div class="form-group text-center">
+                    <button type="reset" class="btn btn-primary">
                         <i class="fa fa-rotate-left"></i> Reset
                     </button>
-                    <button id="submit" type="submit" class="btn btn-flat bg-purple"><i class="fa fa-save"></i> Simpan</button>
+                    <button id="submit" type="submit" class="btn btn-success bg-purple"><i class="fa fa-save"></i> Simpan</button>
                 </div>
                 <?=form_close()?>
             </div>

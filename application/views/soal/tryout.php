@@ -15,11 +15,11 @@
                     <input autofocus="autofocus" onfocus="this.select()" placeholder="Nama Tryout" type="text" class="form-control" name="nama_tryout">
                     <small class="help-block"></small>
                 </div>
-                <div class="form-group pull-right">
-                    <button type="reset" class="btn btn-default btn-flat">
+                <div class="form-group text-center">
+                    <button type="reset" class="btn btn-warning btn-flat">
                         <i class="fa fa-rotate-left"></i> Reset
                     </button>
-                    <button id="submit" type="submit" class="btn btn-flat bg-purple"><i class="fa fa-save"></i> Simpan</button>
+                    <button id="submit" type="submit" class="btn btn-success bg-purple"><i class="fa fa-save"></i> Simpan</button>
                 </div>
                 <?=form_close()?>
             </div>

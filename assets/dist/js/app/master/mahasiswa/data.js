@@ -70,7 +70,7 @@ $(document).ready(function() {
             btn = "";
           } else {
             btn = `<button data-id="${data.id_mahasiswa}" type="button" class="btn btn-xs btn-primary btn-aktif">
-								<i class="fa fa-user-plus"></i>
+								<i class="fa fa-user"></i>
 							</button>`;
           }
           return `<div class="text-center">

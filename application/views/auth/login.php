@@ -1,46 +1,39 @@
-<div class="login-box pt-5">
-	<!-- /.login-logo -->
-	<div class="login-box-body">
-	<h3 class="text-center mt-0 mb-4">
-		<b>S</b>iap <b>T</b>ryout 
-	</h3> 
-	<p class="login-box-msg">SPMB PKN STAN</p>
-
-	<div id="infoMessage" class="text-center"><?php echo $message;?></div>
-
-	<?= form_open("auth/cek_login", array('id'=>'login'));?>
-		<div class="form-group has-feedback">
-			<?= form_input($identity);?>
-			<span class="fa fa-envelope form-control-feedback"></span>
-			<span class="help-block"></span>
+<img class="wave" src="assets/dist/img/wave.png">
+	<div class="container">
+		<div class="img">
+			<img src="assets/dist/img/bg.svg">
 		</div>
-		<div class="form-group has-feedback">
-			<?= form_input($password);?>
-			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-			<span class="help-block"></span>
-		</div>
-		<div class="row">
-			<div class="col-xs-8">
-			<div class="checkbox icheck">
-				<label>
-				<?= form_checkbox('remember', '', FALSE, 'id="remember"');?> Ingat Saya
-				</label>
-			</div>
-			</div>
-			<!-- /.col -->
-			<div class="col-xs-4">
-			<?= form_submit('submit', lang('login_submit_btn'), array('id'=>'submit','class'=>'btn btn-primary btn-block btn-flat'));?>
-			</div>
-			<!-- /.col -->
-		</div>
-		<?= form_close(); ?>
-
-		<a href="<?=base_url()?>auth/forgot_password" class="text-center"><?= lang('login_forgot_password');?></a>
-
+		<div class="login-content">
+		<?= form_open("auth/cek_login", array('id'=>'login'));?>
+				<img src="assets/dist/img/avatar.svg">
+				<h2 class="animated bounceInDown title">Siap Tryout</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-envelope"></i>
+           		   </div>
+           		   <div class="div">
+					  <?= form_input($identity);?>
+           		   		<!-- <h5>Email</h5>
+           		   		<input type="text" class="input"> -->
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+					  <?= form_input($password);?>
+           		    	<!-- <h5>Kata Sandi</h5>
+           		    	<input type="password" class="input"> -->
+            	   </div>
+            	</div>
+            	<a href="#">Lupa Kata Sandi?</a>
+            	<?= form_submit('submit', lang('login_submit_btn'), array('id'=>'submit','class'=>'btn btn-primary btn-block btn-flat'));?>
+			<?= form_close(); ?>
+        </div>
 	</div>
-</div>
-
+	
 <script type="text/javascript">
 	let base_url = '<?=base_url();?>';
 </script>
-<script src="<?=base_url()?>assets/dist/js/app/auth/login.js"></script>
+<script src="<?=base_url()?>assets/dist/js/app/auth/login.js"></script>	

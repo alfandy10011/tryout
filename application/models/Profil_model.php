@@ -11,6 +11,14 @@ class Profil_model extends CI_Model {
 
     }
 
+    public function editProfil($id){
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->where('id_mahasiswa', $id);
+
+        return $this->db->get()->row();
+    }
+
     public function tampilProdi($id){
         $this->db->select('*');
         $this->db->from('data_prodi');

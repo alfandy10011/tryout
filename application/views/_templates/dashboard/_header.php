@@ -7,15 +7,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?=$judul?></title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 	<meta name="description" content="">
+ 	<meta name="author" content="">
 	
 	<!-- Required CSS -->
 	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/select2/css/select2.min.css">
-	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/AdminLTE.min.css">
-	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/skins/skin-purple.min.css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/sb-admin-2.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/pace/pace-theme-flash.css">
 	
@@ -30,7 +30,9 @@
 	<!-- /texarea editor; -->
 
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/mystyle.css">
+	<link href="<?=base_url()?>assets/bower_components/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
+  	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,29 +54,19 @@
 	let base_url = '<?=base_url()?>';
 </script>
 
-<body class="hold-transition skin-purple sidebar-mini">
-	<div class="wrapper">
-
-		<header class="main-header">
-			<?php require_once("_topmenu.php"); ?>
-		</header>
-
+<body id="page-top">
+	<div id="wrapper">
 		<!-- Sidebar -->
 		<?php require_once("_sidebar.php"); ?>
 		<!-- /.sidebar -->
-
 		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-			<section class="content-header">
-				<h1>
-					<?=$judul?>
-					<small><?=$subjudul?></small>
-				</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-					<li class="active"><?=$judul;?></li>
-					<li class="active"><?=$subjudul?></li>
-				</ol>
-			</section>
-			<!-- Main content -->
-			<section class="content container-fluid">
+		<div id="content-wrapper" class="d-flex flex-column">
+			<div id="content">
+			<?php require_once("_topmenu.php"); ?>
+
+			<!-- Page Content -->
+			<div class="container-fluid">
+				 <!-- Page Heading -->
+				 <div class="d-sm-flex align-items-center justify-content-between mb-4">
+				 <h1 class="h3 mb-0 text-gray-800"><?=$judul;?></h1>
+			</div>

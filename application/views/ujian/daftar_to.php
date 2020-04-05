@@ -8,28 +8,17 @@
 ?>
 
 <div class="col-sm-3">
-    <div class="box box-solid box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title">Tryout Online</h3>
-        <div class="box-tools pull-right">
-        <!-- Buttons, labels, and many other things can be placed here! -->
-        <!-- Here is a label for example -->
-        <span class="label label-primary">Tryout <?=$sub_value;?></span>
+    <div class="card animated fadeIn slow" style="width: 18rem;">
+    <!-- <img class="card-img-top" class= "img-fluid" src="../assets/dist/img/Asset 6.png" alt="Card image cap"> -->
+    <div class="card-body ">
+        <h5 class="card-title">Tryout <?=$sub_value;?></h5>
+        <p class="card-text">Tryout Online TPA, TBI, SKD</p>
+        <div class="text-center">
+            <h4><a href="<?=base_url('ujian/list/'.$sub_value)?>" class="btn btn-primary" name="tryout" id="tryout" value="<?=$sub_value;?>">Kerjakan Tryout</a></h4>
+            <input type="hidden" name="tryout_id" value="<?= $sub_value; ?>">
+            <h4><a href="<?=base_url('hasilujian/evaluasi_hasil/'.$sub_value)?>" class="btn btn-success" name="tryout" id="tryout" value="<?=$sub_value;?>">Evaluasi Hasil</a></h4>
         </div>
-        <!-- /.box-tools -->
     </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-        <img src="../assets/dist/img/undraw_researching_22gp.svg" class="img-responsive center-block">
-    </div>
-    <div class="box-body  text-center">
-        <h4><a href="<?=base_url('ujian/list/'.$sub_value)?>" class="btn btn-primary" name="tryout" id="tryout" value="<?=$sub_value;?>">Kerjakan Tryout</a></h4>
-        <h4><a href="<?=base_url('hasilujian/evaluasi_hasil/'.$sub_value)?>" class="btn btn-success" name="tryout" id="tryout" value="<?=$sub_value;?>">Evaluasi Hasil</a></h4>
-    </div>
-
-    <!-- <div class="box-footer text-center">
-        <a class="btn btn-primary" href="#">Lihat Hasil</a>
-    </div> -->
     </div>
 </div>
 
