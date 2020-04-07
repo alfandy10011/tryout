@@ -57,19 +57,41 @@ class Auth extends CI_Controller
 
   public function register()
   {
-    $this->load->view('_templates/auth/_header.php');
-    $this->load->view('auth/register');
+
+    $data = [
+      'profil'    => $this->profil->editProdiPilihan(),
+    ];
+
+    $this->load->view('_templates/auth/_header.php', $data);
+    $this->load->view('auth/register', $data);
     $this->load->view('_templates/auth/_footer.php');
   }
 
   public function postRegister()
   {
+
+    $input = [
+      'nim'       => $this->input->post('username'),
+      'nama'      => $this->input->post('fullname'),
+      'email'     => $this->input->post('email'),
+      'sekolah'   => $this->input->post('school'),
+      'pilihan_1' => $this->input->post('pil_1'),
+      'pilihan_2' => $this->input->post('pil_2'),
+      'pilihan_3' => $this->input->post('pil_3'),
+      'kelas_id'  => 1,
+    ];
+    
+    $data = [
+      'profil'    => $this->profil->editProdiPilihan(),
+    ];
+
     $this->validateRegister();
     if ($this->form_validation->run() == false) {
-      $this->load->view('_templates/auth/_header.php');
-      $this->load->view('auth/register');
+      $this->load->view('_templates/auth/_header.php', $data);
+      $this->load->view('auth/register', $data);
       $this->load->view('_templates/auth/_footer.php');
     } else {
+      $this->master->create('mahasiswa', $input);
       $this->auth->register($this->input->post());
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat anda berhasil mendaftar di Siap Tryout! Silahkan Login</div>');
       redirect('login');

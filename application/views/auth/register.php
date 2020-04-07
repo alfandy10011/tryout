@@ -23,7 +23,7 @@
       </div>
       <div class="div">
         <h5>Nama Lengkap</h5>
-        <input type="text" class="input" name="fullname" value="<?=set_value('fullname')?>">
+        <input type="text" class="input" name="fullname" value="<?= set_value('fullname') ?>">
       </div>
     </div>
     <p><?php echo form_error('fullname'); ?></p>
@@ -33,7 +33,7 @@
       </div>
       <div class="div">
         <h5>Asal Sekolah</h5>
-        <input type="text" class="input" name="school" value="<?=set_value('school')?>">
+        <input type="text" class="input" name="school" value="<?= set_value('school') ?>">
       </div>
     </div>
     <p><?php echo form_error('school'); ?></p>
@@ -43,7 +43,7 @@
       </div>
       <div class="div">
         <h5>Email</h5>
-        <input type="email" class="input" name="email" value="<?=set_value('email')?>">
+        <input type="email" class="input" name="email" value="<?= set_value('email') ?>">
       </div>
     </div>
     <p><?php echo form_error('email'); ?></p>
@@ -53,7 +53,7 @@
       </div>
       <div class="div">
         <h5>Kata Sandi</h5>
-        <input type="password" class="input" name="password" value="<?=set_value('password')?>">
+        <input type="password" class="input" name="password" value="<?= set_value('password') ?>">
       </div>
     </div>
     <p><?php echo form_error('password_confirmation'); ?></p>
@@ -63,8 +63,41 @@
       </div>
       <div class="div">
         <h5>Konfirmasi Kata Sandi</h5>
-        <input type="password" class="input" name="password_confirmation" value="<?=set_value('password_confirmation')?>">
+        <input type="password" class="input" name="password_confirmation" value="<?= set_value('password_confirmation') ?>">
       </div>
+    </div>
+    <div class="form-group">
+      <label for="nama_lengkap">Pilihan 1</label>
+      <select class="form-control" id="pil_1" name="pil_1">
+        <?php
+        foreach ($profil as $p) {
+          echo '<option value="' . $p->id_prodi . '">' . $p->nama_prodi . '</option>';
+        }
+        ?>
+      </select>
+      <small class="help-block"></small>
+    </div>
+    <div class="form-group">
+      <label for="nama_lengkap">Pilihan 1</label>
+      <select class="form-control" id="pil_2" name="pil_2">
+        <?php
+        foreach ($profil as $p) {
+          echo '<option value="' . $p->id_prodi . '">' . $p->nama_prodi . '</option>';
+        }
+        ?>
+      </select>
+      <small class="help-block"></small>
+    </div>
+    <div class="form-group">
+      <label for="nama_lengkap">Pilihan 1</label>
+      <select class="form-control" id="pil_2" name="pil_3">
+        <?php
+        foreach ($profil as $p) {
+          echo '<option value="' . $p->id_prodi . '">' . $p->nama_prodi . '</option>';
+        }
+        ?>
+      </select>
+      <small class="help-block"></small>
     </div>
     <?= form_submit('submit', 'Daftar', array('id' => 'register_submit', 'class' => 'btn btn-primary btn-block btn-flat')); ?>
     <?= form_close(); ?>
