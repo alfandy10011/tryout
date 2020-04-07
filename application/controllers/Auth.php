@@ -58,30 +58,21 @@ class Auth extends CI_Controller
   public function register()
   {
     $this->load->view('_templates/auth/_header.php');
-    $this->load->view('auth/register', ['programs' => $this->profil->editProdiPilihan()]);
+    $this->load->view('auth/register');
     $this->load->view('_templates/auth/_footer.php');
   }
 
-  private function validateRegister() {
-    $this->form_validation->set_rules('fullname', 'Fullname', 'required|trim');
-    $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[users.username]');
-    $this->form_validation->set_rules('school', 'Asal Sekolah', 'required|trim');
-    $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
-    $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[password_confirmation]', ['matches' => 'Password tidak sama!']);
-    $this->form_validation->set_rules('password_confirmation', 'Password', 'required|trim|matches[password]');
-  }
-
-  public function post_register()
+  public function postRegister()
   {
     $this->validateRegister();
     if ($this->form_validation->run() == false) {
       $this->load->view('_templates/auth/_header.php');
-      $this->load->view('auth/register', ['profil' => $this->profil->editProdiPilihan()]);
+      $this->load->view('auth/register');
       $this->load->view('_templates/auth/_footer.php');
     } else {
       $this->auth->register($this->input->post());
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat anda berhasil mendaftar di Siap Tryout! Silahkan Login</div>');
-      redirect('auth/register');
+      redirect('login');
     }
   }
 
@@ -125,6 +116,14 @@ class Auth extends CI_Controller
   // 	redirect('auth');
   // }
 
+  private function validateRegister() {
+    $this->form_validation->set_rules('fullname', 'Fullname', 'required|trim');
+    $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[users.username]');
+    $this->form_validation->set_rules('school', 'Asal Sekolah', 'required|trim');
+    $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
+    $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]|matches[password_confirmation]', ['matches' => 'Password tidak sama!']);
+    $this->form_validation->set_rules('password_confirmation', 'Password', 'required|trim|matches[password]');
+  }
 
   public function cek_login()
   {

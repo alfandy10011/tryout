@@ -5,6 +5,7 @@
   </div>
   <div class="login-content">
     <?= form_open("auth/cek_login", array('id' => 'login')); ?>
+    <?php echo $this->session->flashdata('message') ?>
     <img src="assets/dist/img/avatar.svg">
     <h2 class="animated bounceInDown title">Siap Tryout</h2>
     <div class="input-div one">

@@ -17,6 +17,7 @@ class Auth_model extends CI_Model
     $password = $user['password'];
 
     $group = $this->group->get_student_id();
-    $res = $this->ion_auth->register($username, $password, $email, null, [$group]);
+    $res = $this->ion_auth->register($username, $password, $email, [null], [$group]);
+    return $res;
   }
 }
