@@ -13,8 +13,6 @@
       </div>
       <div class="div">
         <?= form_input($identity); ?>
-        <!-- <h5>Email</h5>
-           		   		<input type="text" class="input"> -->
       </div>
     </div>
     <div class="input-div pass">
@@ -23,8 +21,6 @@
       </div>
       <div class="div">
         <?= form_input($password); ?>
-        <!-- <h5>Kata Sandi</h5>
-           		    	<input type="password" class="input"> -->
       </div>
     </div>
     <a href='<?php echo site_url('auth/register') ?>'>Daftar</a>

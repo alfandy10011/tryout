@@ -16,6 +16,8 @@ class Auth extends CI_Controller
     $this->lang->load('auth');
     $this->load->model('Master_model', 'master');
     $this->load->model('Profil_model', 'profil');
+    $this->load->model('Auth_model', 'auth');
+    $this->load->model('Group_model', 'group');
   }
 
   public function output_json($data)
@@ -56,75 +58,30 @@ class Auth extends CI_Controller
   public function register()
   {
     $this->load->view('_templates/auth/_header.php');
-    $this->load->view('auth/register');
+    $this->load->view('auth/register', ['programs' => $this->profil->editProdiPilihan()]);
     $this->load->view('_templates/auth/_footer.php');
+  }
+
+  private function validateRegister() {
+    $this->form_validation->set_rules('fullname', 'Fullname', 'required|trim');
+    $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[users.username]');
+    $this->form_validation->set_rules('school', 'Asal Sekolah', 'required|trim');
+    $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
+    $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[password_confirmation]', ['matches' => 'Password tidak sama!']);
+    $this->form_validation->set_rules('password_confirmation', 'Password', 'required|trim|matches[password]');
   }
 
   public function post_register()
   {
-    print_r($this->input);
-    die();
-    $this->form_validation->set_rules('firstname', 'Fullname', 'required|trim');
-    $this->form_validation->set_rules('lastname', 'Fullname', 'required|trim');
-    $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[users.username]');
-    $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
-    $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-    $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]', ['matches' => 'Password tidak sama!']);
-    $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
-
-    $data = $this->input->post('username');
-    $nama = explode(' ', $data);
-    $first_name = $nama[0];
-    $last_name = end($nama);
-    $username = $this->input->post('username');
-    $password = $this->input->post('password1');
-    $email = $this->input->post('email');
-    $additional_data = [
-      'first_name'  => $first_name,
-      'last_name'    => $last_name
-    ];
-    $group = array('3');
-    $asal_sekolah = $this->input->post('asal_sekolah');
-    $pil_1 = $this->input->post('pil_1', true);
-    $pil_2 = $this->input->post('pil_2', true);
-    $pil_3 = $this->input->post('pil_3', true);
-
-    $input = [
-      'nim' => $username,
-      'nama' => $data,
-      'email' => $email,
-      'kelas_id' => 1,
-      'sekolah'  => $asal_sekolah,
-      'pilihan_1'  => $pil_1,
-      'pilihan_2'  => $pil_2,
-      'pilihan_3'  => $pil_3,
-    ];
-
-    $data = [
-      'profil'    => $this->profil->editProdiPilihan(),
-    ];
-
-
+    $this->validateRegister();
     if ($this->form_validation->run() == false) {
-      $this->load->view('_templates/auth/_header.php', $data);
-      $this->load->view('auth/register', $data);
+      $this->load->view('_templates/auth/_header.php');
+      $this->load->view('auth/register', ['profil' => $this->profil->editProdiPilihan()]);
       $this->load->view('_templates/auth/_footer.php');
     } else {
-
-      // // Siapkan Token
-      // $token = base64_encode(random_bytes(32));
-      // $user_token = [
-      // 	'email' => $email,
-      // 	'token'	=> $token,
-      // 	'date_created'	=> time(),
-      // ];
-
-      $this->ion_auth->register($username, $password, $email, $additional_data, $group);
-      $this->master->create('mahasiswa', $input);
-      // $this->master->create('user_token', $user_token);
-      // $this->_sendEmail($token, 'verify');
+      $this->auth->register($this->input->post());
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat anda berhasil mendaftar di Siap Tryout! Silahkan Login</div>');
-      redirect('auth');
+      redirect('auth/register');
     }
   }
 
