@@ -18,6 +18,7 @@ class Auth extends CI_Controller
     $this->load->model('Profil_model', 'profil');
     $this->load->model('Auth_model', 'auth');
     $this->load->model('Group_model', 'group');
+    $this->load->model('StudyProgram_model', 'study_program');
   }
 
   public function output_json($data)
@@ -59,7 +60,7 @@ class Auth extends CI_Controller
   {
 
     $data = [
-      'profil'    => $this->profil->editProdiPilihan(),
+      'profil'    => $this->study_program->studyPrograms(),
     ];
 
     $this->load->view('_templates/auth/_header.php', $data);
@@ -80,7 +81,7 @@ class Auth extends CI_Controller
       'pilihan_3' => $this->input->post('pil_3'),
       'kelas_id'  => 1,
     ];
-    
+
     $data = [
       'profil'    => $this->profil->editProdiPilihan(),
     ];
@@ -138,7 +139,8 @@ class Auth extends CI_Controller
   // 	redirect('auth');
   // }
 
-  private function validateRegister() {
+  private function validateRegister()
+  {
     $this->form_validation->set_rules('fullname', 'Fullname', 'required|trim');
     $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[users.username]');
     $this->form_validation->set_rules('school', 'Asal Sekolah', 'required|trim');

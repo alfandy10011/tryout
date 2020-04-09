@@ -1,27 +1,27 @@
-<!-- 
+<!--
 <div class="row"> -->
 	<!-- <div class="col-sm-3">
         <div class="alert bg-green">
             <h4>Ujian Seleksi<i class="pull-right fa fa-building-o"></i></h4>
-            <span class="d-block"> <?=$mhs->nama_kelas?></span>                
+            <span class="d-block"> <?=$mhs->nama_kelas?></span>
         </div>
     </div>
     <div class="col-sm-3">
         <div class="alert bg-blue">
             <h4>Tipe Ujian<i class="pull-right fa fa-graduation-cap"></i></h4>
-            <span class="d-block"> <?=$mhs->nama_jurusan?></span>                
+            <span class="d-block"> <?=$mhs->nama_jurusan?></span>
         </div>
     </div>
     <div class="col-sm-3">
         <div class="alert bg-yellow">
             <h4>Tanggal<i class="pull-right fa fa-calendar"></i></h4>
-            <span class="d-block"> <?=strftime('%A, %d %B %Y')?></span>                
+            <span class="d-block"> <?=strftime('%A, %d %B %Y')?></span>
         </div>
     </div>
     <div class="col-sm-3">
         <div class="alert bg-red">
             <h4>Jam<i class="pull-right fa fa-clock-o"></i></h4>
-            <span class="d-block"> <span class="live-clock"><?=date('H:i:s')?></span></span>                
+            <span class="d-block"> <span class="live-clock"><?=date('H:i:s')?></span></span>
         </div>
     </div> -->
     <!-- <div class="col-sm-12"> -->
@@ -46,7 +46,7 @@
                         <th>Waktu</th>
                         <th>Token</th>
                         <th class="text-center">Aksi</th>
-                    </tr>        
+                    </tr>
                 </thead>
                 <tfoot>
                     <tr>

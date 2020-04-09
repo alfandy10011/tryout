@@ -67,7 +67,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="nama_lengkap">Pilihan 1</label>
+      <label for="pil_1">Pilihan 1</label>
       <select class="form-control" id="pil_1" name="pil_1">
         <?php
         foreach ($profil as $p) {
@@ -78,7 +78,7 @@
       <small class="help-block"></small>
     </div>
     <div class="form-group">
-      <label for="nama_lengkap">Pilihan 1</label>
+      <label for="pil_2">Pilihan 2</label>
       <select class="form-control" id="pil_2" name="pil_2">
         <?php
         foreach ($profil as $p) {
@@ -89,7 +89,7 @@
       <small class="help-block"></small>
     </div>
     <div class="form-group">
-      <label for="nama_lengkap">Pilihan 1</label>
+      <label for="pil_2">Pilihan 3</label>
       <select class="form-control" id="pil_2" name="pil_3">
         <?php
         foreach ($profil as $p) {
