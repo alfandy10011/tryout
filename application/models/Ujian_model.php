@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ujian_model extends CI_Model {
-    
+
     public function getDataUjian($id)
     {
         $this->datatables->select('a.id_ujian, a.token, a.nama_ujian, b.nama_matkul, a.jumlah_soal, CONCAT(a.tgl_mulai, " <br/> (", a.waktu, " Menit)") as waktu, a.jenis');
@@ -13,7 +13,7 @@ class Ujian_model extends CI_Model {
         }
         return $this->datatables->generate();
     }
-    
+
     public function getListUjian($id, $kelas, $id_tryout)
     {
         $this->db->select("a.matkul_id, a.id_ujian, a.token, e.nama_dosen, d.nama_kelas, a.nama_ujian, a.tryout_id, b.nama_matkul, a.jumlah_soal, CONCAT(a.tgl_mulai, ' <br/> (', a.waktu, ' Menit)') as waktu,  (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian) AS ada");
@@ -28,7 +28,7 @@ class Ujian_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-    
+
     public function HslUjianById($id, $dt=false)
     {
         if($dt===false){
@@ -38,7 +38,7 @@ class Ujian_model extends CI_Model {
             $db = "datatables";
             $get = "generate";
         }
-        
+
         $this->$db->select('d.id, a.nama, b.nama_kelas, c.nama_jurusan, d.jml_benar, d.jml_salah, d.nilai');
         $this->$db->from('mahasiswa a');
         $this->$db->join('kelas b', 'a.kelas_id=b.id_kelas');
@@ -57,7 +57,7 @@ class Ujian_model extends CI_Model {
             $db = "datatables";
             $get = "generate";
         }
-        
+
         $this->$db->select('*, (nilai_tpa + nilai_tbi) as total_tpa_tbi, (nilai_twk + nilai_tiu + nilai_tkp) as total_skd');
         $this->$db->from('h_tryout');
         $this->$db->where('id_tryout', $id);
