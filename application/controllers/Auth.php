@@ -141,7 +141,7 @@ class Auth extends CI_Controller
 
   private function validateRegister()
   {
-    $this->form_validation->set_rules('fullname', 'Fullname', 'required|trim');
+    $this->form_validation->set_rules('fullname', 'Nama Lengkap', 'required|trim');
     $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[users.username]');
     $this->form_validation->set_rules('school', 'Asal Sekolah', 'required|trim');
     $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
@@ -161,7 +161,7 @@ class Auth extends CI_Controller
       } else {
         $data = [
           'status' => false,
-          'failed' => 'Incorrect Login',
+          'failed' => 'Login Gagal! Username/Password Salah',
         ];
         $this->output_json($data);
       }

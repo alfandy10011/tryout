@@ -5,15 +5,17 @@
   </div>
   <div class="login-content">
     <?= form_open("auth/cek_login", array('id' => 'login')); ?>
-    <?php echo $this->session->flashdata('message') ?>
+    <!-- <?php echo $this->session->flashdata('message') ?> -->
     <img src="assets/dist/img/avatar.svg">
-    <h2 class="animated bounceInDown title">Siap Tryout</h2>
-    <div class="input-div one">
+    <h2 class="animated bounceInDown title text-info">Siap Tryout</h2>
+    <div id="infoMessage" class="text-center text-info"><?php echo $message;?></div>
+    <div class="input-div one mt-4">
       <div class="i">
         <i class="fas fa-envelope"></i>
       </div>
       <div class="div">
-        <?= form_input($identity); ?>
+        <h5>Email</h5>
+        <input type="text" class="input" name="identity">
       </div>
     </div>
     <div class="input-div pass">
@@ -21,7 +23,8 @@
         <i class="fas fa-lock"></i>
       </div>
       <div class="div">
-        <?= form_input($password); ?>
+        <h5>Kata Sandi</h5>
+        <input type="password" class="input" name="password">
       </div>
     </div>
     <a href='<?php echo site_url('auth/register') ?>'>Daftar</a>

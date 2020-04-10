@@ -6,7 +6,7 @@
   <div class="login-content">
     <?= form_open("auth/postRegister", array('id' => 'submit')); ?>
     <img src="../assets/dist/img/avatar.svg">
-    <h2 class="animated bounceInDown title">Pendaftaran</h2>
+    <h2 class="animated bounceInDown title text-info">Pendaftaran</h2>
     <div class="input-div one">
       <div class="i">
         <i class="fas fa-user"></i>

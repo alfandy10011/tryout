@@ -595,6 +595,7 @@ class Ujian extends CI_Controller
     $key = $this->input->get('key', true);
     $id  = $this->encryption->decrypt(rawurldecode($key));
     $ujian = $this->ujian->getUjianById($id);
+    
     // var_dump($ujian);
     // die();
     $mhs  = $this->mhs->id_mahasiswa;

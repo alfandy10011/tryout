@@ -9,16 +9,13 @@
             </div>
             <div class="card-body">
                 <p class="card-text"><?= $p->soal ?></p>
-
                 <?php if (empty($p->opsi_e)) : ?>
-
                     <ol type="A">
                         <li><?= $p->opsi_a ?></li>
                         <li><?= $p->opsi_b ?></li>
                         <li><?= $p->opsi_c ?></li>
                         <li><?= $p->opsi_d ?></li>
                     </ol>
-
                 <?php else : ?>
                     <ol type="A">
                         <li><?= $p->opsi_a ?></li>
@@ -27,7 +24,6 @@
                         <li><?= $p->opsi_d ?></li>
                         <li><?= $p->opsi_e ?></li>
                     </ol>
-
                 <?php endif; ?>
                 <!-- <h6><strong>Pembahasan</strong></h6> -->
                 <p>
@@ -37,7 +33,6 @@
                 </p>
                 <div class="collapse" id="<?= 'a' . ($p->id_soal) ?>">
                     <div class="card card-body">
-
                         <?php if( ($p->poin_a || $p->poin_b || $p->poin_c || $p->poin_d || $p->poin_e ) != null ) : ?>
                             <ol type="A">
                                 <li><?= " Skor : ". $p->poin_a ?></li>
@@ -55,6 +50,5 @@
             </div>
         </div>
     </div>
-
 <?php endforeach; ?>
 <?php echo $this->pagination->create_links(); ?>
