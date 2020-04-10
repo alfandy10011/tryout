@@ -69,13 +69,13 @@ $(document).ready(function() {
           if (data.ada > 0) {
             btn = "";
           } else {
-            btn = `<button data-id="${data.id_mahasiswa}" type="button" class="btn btn-xs btn-primary btn-aktif">
-								<i class="fa fa-user"></i>
+            btn = `<button data-id="${data.id_mahasiswa}" type="button" class="btn btn-sm btn-primary btn-aktif">
+								Aktif
 							</button>`;
           }
           return `<div class="text-center">
-									<a class="btn btn-xs btn-warning" href="${base_url}mahasiswa/edit/${data.id_mahasiswa}">
-										<i class="fa fa-pencil"></i>
+									<a class="btn btn-sm btn-warning" href="${base_url}mahasiswa/edit/${data.id_mahasiswa}">
+										<i class="fa fa-pencil"></i> Edit
 									</a>
 									${btn}
 								</div>`;
