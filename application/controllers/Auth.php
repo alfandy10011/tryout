@@ -338,7 +338,7 @@ class Auth extends CI_Controller
           if ($change) {
             // if the password was successfully changed
             $this->session->set_flashdata('message', $this->ion_auth->messages());
-            redirect("auth/login", 'refresh');
+            redirect("login", 'refresh');
           } else {
             $this->session->set_flashdata('message', $this->ion_auth->errors());
             redirect('auth/reset_password/' . $code, 'refresh');

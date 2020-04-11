@@ -24,10 +24,10 @@ $lang['account_creation_invalid_default_group'] = 'Invalid default group name se
 
 
 // Password
-$lang['password_change_successful']          = 'Password Successfully Changed';
-$lang['password_change_unsuccessful']        = 'Unable to Change Password';
-$lang['forgot_password_successful']          = 'Password Reset Email Sent';
-$lang['forgot_password_unsuccessful']        = 'Unable to email the Reset Password link';
+$lang['password_change_successful']          = 'Kata Sandi Berhasil Diubah!';
+$lang['password_change_unsuccessful']        = 'Tidak Dapat Mengganti Kata Sandi';
+$lang['forgot_password_successful']          = 'Permohohan Lupa Kata Sandi Berhasil Dikirim ke Email';
+$lang['forgot_password_unsuccessful']        = 'Gagal Mengirimkan Email Ganti Kata Sandi';
 
 // Activation
 $lang['activate_successful']                 = 'Account Activated';

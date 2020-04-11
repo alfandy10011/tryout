@@ -116,18 +116,18 @@ $lang['edit_group_validation_name_label']  = 'Group Name';
 $lang['edit_group_validation_desc_label']  = 'Description';
 
 // Change Password
-$lang['change_password_heading']                               = 'Change Password';
-$lang['change_password_old_password_label']                    = 'Old Password:';
-$lang['change_password_new_password_label']                    = 'New Password (at least %s characters long):';
-$lang['change_password_new_password_confirm_label']            = 'Confirm New Password:';
-$lang['change_password_submit_btn']                            = 'Change';
-$lang['change_password_validation_old_password_label']         = 'Old Password';
-$lang['change_password_validation_new_password_label']         = 'New Password';
-$lang['change_password_validation_new_password_confirm_label'] = 'Confirm New Password';
+$lang['change_password_heading']                               = 'Ganti Kata Sandi';
+$lang['change_password_old_password_label']                    = 'Kata Sandi Lama:';
+$lang['change_password_new_password_label']                    = 'Kata Sandi Baru (minimal %s karakter):';
+$lang['change_password_new_password_confirm_label']            = 'Konfirmasi Kata Sandi Baru:';
+$lang['change_password_submit_btn']                            = 'Ganti';
+$lang['change_password_validation_old_password_label']         = 'Kata Sandi Lama';
+$lang['change_password_validation_new_password_label']         = 'Kata Sandi Baru';
+$lang['change_password_validation_new_password_confirm_label'] = 'Konfirmasi Kata Sandi Baru';
 
 // Forgot Password
-$lang['forgot_password_heading']                 = 'Forgot Password';
-$lang['forgot_password_subheading']              = 'Please enter your %s so we can send you an email to reset your password.';
+$lang['forgot_password_heading']                 = 'Lupa Kata Sandi';
+$lang['forgot_password_subheading']              = 'Masukkan %s untuk mengirimkan permohohan ganti kata sandi.';
 $lang['forgot_password_email_label']             = '%s:';
 $lang['forgot_password_submit_btn']              = 'Submit';
 $lang['forgot_password_validation_email_label']  = 'Email Address';
@@ -137,9 +137,9 @@ $lang['forgot_password_email_not_found']         = 'No record of that email addr
 $lang['forgot_password_identity_not_found']         = 'No record of that username.';
 
 // Reset Password
-$lang['reset_password_heading']                               = 'Change Password';
-$lang['reset_password_new_password_label']                    = 'New Password (at least %s characters long):';
-$lang['reset_password_new_password_confirm_label']            = 'Confirm New Password:';
-$lang['reset_password_submit_btn']                            = 'Change';
-$lang['reset_password_validation_new_password_label']         = 'New Password';
-$lang['reset_password_validation_new_password_confirm_label'] = 'Confirm New Password';
+$lang['reset_password_heading']                               = 'Ganti Kata Sandi';
+$lang['reset_password_new_password_label']                    = 'Kata Sandi Baru';
+$lang['reset_password_new_password_confirm_label']            = 'Konfirmasi Kata Sandi Baru';
+$lang['reset_password_submit_btn']                            = 'Ganti';
+$lang['reset_password_validation_new_password_label']         = 'Kata Sandi Baru';
+$lang['reset_password_validation_new_password_confirm_label'] = 'Konfirmasi Kata Sandi Baru';

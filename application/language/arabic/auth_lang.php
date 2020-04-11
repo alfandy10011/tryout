@@ -127,7 +127,7 @@ $lang['change_password_validation_new_password_confirm_label'] = 'Confirm New Pa
 
 // Forgot Password
 $lang['forgot_password_heading']                 = 'Forgot Password';
-$lang['forgot_password_subheading']              = 'Please enter your %s so we can send you an email to reset your password.';
+$lang['forgot_password_subheading']              = 'Masukkan %s untuk mengirim permohonan lupa password.';
 $lang['forgot_password_email_label']             = '%s:';
 $lang['forgot_password_submit_btn']              = 'Submit';
 $lang['forgot_password_validation_email_label']  = 'Email Address';
@@ -138,7 +138,7 @@ $lang['forgot_password_identity_not_found']         = 'No record of that usernam
 
 // Reset Password
 $lang['reset_password_heading']                               = 'Change Password';
-$lang['reset_password_new_password_label']                    = 'New Password (at least %s characters long):';
+$lang['reset_password_new_password_label']                    = 'New Password';
 $lang['reset_password_new_password_confirm_label']            = 'Confirm New Password:';
 $lang['reset_password_submit_btn']                            = 'Change';
 $lang['reset_password_validation_new_password_label']         = 'New Password';

@@ -1,15 +1,12 @@
-<div class="login-box pt-5">
-	<!-- /.login-logo -->
-	<div class="login-logo">
-		<a href="<?=base_url('login')?>"><b>CBT</b>APP</a>
-	</div>
-
-	<div class="login-box-body">
-		<p class="login-box-msg">
+<div class="row justify-content-center" style="margin-top: 150px;" >
+	<div class="col-md-">
+		<div class="card">
+			<div class="card-body">
+		<p class="text-center">
 			<?php echo lang('reset_password_heading');?>
 		</p>
 
-		<div id="infoMessage" class="text-red text-center"><?php echo $message;?></div>
+		<div id="infoMessage" class="text-danger text-center"><?php echo $message;?></div>
 
 		<?php echo form_open('auth/reset_password/' . $code);?>
 
@@ -26,8 +23,10 @@
 			<?php echo form_input($user_id);?>
 			<?php echo form_hidden($csrf); ?>
 
-			<p><?php echo form_submit('submit', lang('reset_password_submit_btn'));?></p>
+			<p><?php echo form_submit('submit', lang('reset_password_submit_btn'), ['class' => 'btn btn-primary btn-flat btn-block']);?></p>
 
 		<?php echo form_close();?>
+		</div>
+		</div>
 	</div>
 </div>
