@@ -7,7 +7,7 @@ $(document).ready(function () {
         if (token === '') {
             Swal('Gagal', 'Token harus diisi', 'error');
         } else {
-            var key = $('#id_ujian').data('key');
+            var ujian_id = $('#ujian_id').data('key');
             $.ajax({
                 url: base_url + 'ujian/cektoken/',
                 type: 'POST',
@@ -23,7 +23,7 @@ $(document).ready(function () {
                         "text": result.status ? "Token Benar" : "Token Salah"
                     }).then((data) => {
                         if(result.status){
-                            location.href = base_url + 'ujian/?key=' + key;
+                            location.href = base_url + 'ujian/index/' + ujian_id;
                         }
                     });
                 }

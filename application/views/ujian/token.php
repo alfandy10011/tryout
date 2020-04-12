@@ -3,7 +3,7 @@
     <h3 class="box-title">Konfirmasi Data</h3>
   </div>
   <div class="box-body">
-    <span id="id_ujian" data-key="<?= $encrypted_id ?>"></span>
+    <span id="ujian_id" data-key="<?= $ujian_id ?>"></span>
     <div class="row">
       <div class="col-sm-6">
         <table class="table table-bordered">
