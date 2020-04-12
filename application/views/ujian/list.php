@@ -107,9 +107,11 @@
         <p class="card-text">Jumlah Soal : <strong><?=$u->jumlah_soal ?></strong></p>
         <p class="card-text">Waktu : <strong><?=$u->waktu ?></strong></p>
 
-        <?php if($u->ada > 0) : ?>
+        <?php if($u->selesai) : ?>
             <a href="<?= base_url('ujian/lihat_hasil/'.$u->id_ujian) ?>" class="btn btn-success btn-sm">Lihat Hasil</a>
             <a href="<?= base_url('ujian/pembahasan/'.$u->matkul_id) ?>" class="btn btn-info btn-sm">Lihat Pembahasan</a>
+        <?php elseif ($u->ada > 0): ?>
+            <a href="<?= base_url('ujian/index/'.$u->id_ujian) ?>" class="btn btn-info btn-sm">Lanjutkan</a>
         <?php else: ?>
             <a href="<?= base_url('ujian/token/'.$u->id_ujian) ?>" class="btn btn-primary btn-sm">Kerjakan</a>
         <?php endif; ?>

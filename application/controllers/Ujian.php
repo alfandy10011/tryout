@@ -249,16 +249,14 @@ class Ujian extends CI_Controller
 
     $ujian = $this->ujian->getListUjian($this->mhs->id_mahasiswa, $this->mhs->kelas_id, $id);
     $user = $this->ion_auth->user()->row();
+    $mahasiswa = $this->ujian->getIdMahasiswa($user->username);
 
     $data = [
       'user'     => $user,
       'judul'    => 'Tryout',
       'subjudul'  => 'Daftar Tryout',
-      'mhs'     => $this->ujian->getIdMahasiswa($user->username),
+      'mhs'     => $mahasiswa,
       'ujian'    => $ujian,
-      // 'nilai'		=>
-      // 'hasil'		=> $this->ujian->HslUjian($id, $mhs->id_mahasiswa)->row(),
-      // 'ujian'		=> $this->ujian->getUjianById($id)
     ];
     $this->load->view('_templates/dashboard/_header.php', $data);
     $this->load->view('ujian/list');
@@ -653,7 +651,8 @@ class Ujian extends CI_Controller
       'nilai'      => number_format(floor($nilai), 0),
       'nilai_bobot'  => number_format(floor($nilai_bobot), 0),
       'nilai_tkp'    => $poin_tkp,
-      'status'    => 'N'
+      'status'    => 'N',
+      'selesai' => true
     ];
 
     $update_tpa = [
