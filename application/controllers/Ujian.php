@@ -383,94 +383,92 @@ class Ujian extends CI_Controller
     $mhs    = $this->mhs;
     $check_mhs  = $this->soal->getHasilTryout($mhs->id_mahasiswa);
     $h_ujian   = $this->ujian->HslUjian($id, $mhs->id_mahasiswa);
-    if ($h_ujian->num_rows() < 1) {
-      if ($h_ujian->selesai == null || $h_ujian->selesai == false) {
-        $soal_urut_ok   = array();
-        $i = 0;
-        foreach ($soal as $s) {
-          $soal_per = new stdClass();
-          $soal_per->id_soal     = $s->id_soal;
-          $soal_per->soal     = $s->soal;
-          $soal_per->file     = $s->file;
-          $soal_per->tipe_file   = $s->tipe_file;
-          $soal_per->opsi_a     = $s->opsi_a;
-          $soal_per->opsi_b     = $s->opsi_b;
-          $soal_per->opsi_c     = $s->opsi_c;
-          $soal_per->opsi_d     = $s->opsi_d;
-          $soal_per->opsi_e     = $s->opsi_e;
-          $soal_per->jawaban     = $s->jawaban;
-          $soal_urut_ok[$i]     = $soal_per;
-          $i++;
-        }
-        $soal_urut_ok   = $soal_urut_ok;
-        $list_id_soal  = "";
-        $list_jw_soal   = "";
-        if (!empty($soal)) {
-          foreach ($soal as $d) {
-            $list_id_soal .= $d->id_soal . ",";
-            $list_jw_soal .= $d->id_soal . "::N,";
-          }
-        }
-        $list_id_soal   = substr($list_id_soal, 0, -1);
-        $list_jw_soal   = substr($list_jw_soal, 0, -1);
-        $waktu_selesai   = date('Y-m-d H:i:s', strtotime("+{$ujian->waktu} minute"));
-        $time_mulai    = date('Y-m-d H:i:s');
-
-        $input = [
-          'ujian_id'     => $id,
-          'mahasiswa_id'  => $mhs->id_mahasiswa,
-          'id_tryout'    => $ujian->tryout_id,
-          'list_soal'    => $list_id_soal,
-          'list_jawaban'   => $list_jw_soal,
-          'jml_benar'    => 0,
-          'nilai'      => 0,
-          'nilai_bobot'  => 0,
-          'tgl_mulai'    => $time_mulai,
-          'tgl_selesai'  => $waktu_selesai,
-          'status'    => 'Y'
-        ];
-
-        $masuk = [
-          'id_tryout'    => $ujian->tryout_id,
-          'id_mahasiswa'  => $mhs->id_mahasiswa,
-          'nama'      => $mhs->nama,
-        ];
-
-        // $input_tpa = [
-        // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
-        // 	'id_tryout'		=> $ujian->tryout_id,
-        // ];
-
-        // $input_tbi = [
-        // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
-        // 	'id_tryout'		=> $ujian->tryout_id,
-        // ];
-
-        // $input_twk = [
-        // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
-        // 	'id_tryout'		=> $ujian->tryout_id,
-        // ];
-
-        // $input_tiu = [
-        // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
-        // 	'id_tryout'		=> $ujian->tryout_id,
-        // ];
-
-        $get_nama = $this->soal->getNamaUjian($id);
-
-
-        // $this->master->create('to_tpa', $input_tpa);
-        // $this->master->create('to_tbi', $input_tbi);
-
-        if (empty($check_mhs)) {
-          $this->master->create('h_tryout', $masuk);
-        }
-
-        $this->master->create('h_ujian', $input);
-
-        // Setelah insert wajib refresh dulu
-        redirect('ujian/index/' . $id, 'location', 301);
+    if ($h_ujian->num_rows() < 1 && ($h_ujian->selesai == null || $h_ujian->selesai == false)) {
+      $soal_urut_ok   = array();
+      $i = 0;
+      foreach ($soal as $s) {
+        $soal_per = new stdClass();
+        $soal_per->id_soal     = $s->id_soal;
+        $soal_per->soal     = $s->soal;
+        $soal_per->file     = $s->file;
+        $soal_per->tipe_file   = $s->tipe_file;
+        $soal_per->opsi_a     = $s->opsi_a;
+        $soal_per->opsi_b     = $s->opsi_b;
+        $soal_per->opsi_c     = $s->opsi_c;
+        $soal_per->opsi_d     = $s->opsi_d;
+        $soal_per->opsi_e     = $s->opsi_e;
+        $soal_per->jawaban     = $s->jawaban;
+        $soal_urut_ok[$i]     = $soal_per;
+        $i++;
       }
+      $soal_urut_ok   = $soal_urut_ok;
+      $list_id_soal  = "";
+      $list_jw_soal   = "";
+      if (!empty($soal)) {
+        foreach ($soal as $d) {
+          $list_id_soal .= $d->id_soal . ",";
+          $list_jw_soal .= $d->id_soal . "::N,";
+        }
+      }
+      $list_id_soal   = substr($list_id_soal, 0, -1);
+      $list_jw_soal   = substr($list_jw_soal, 0, -1);
+      $waktu_selesai   = date('Y-m-d H:i:s', strtotime("+{$ujian->waktu} minute"));
+      $time_mulai    = date('Y-m-d H:i:s');
+
+      $input = [
+        'ujian_id'     => $id,
+        'mahasiswa_id'  => $mhs->id_mahasiswa,
+        'id_tryout'    => $ujian->tryout_id,
+        'list_soal'    => $list_id_soal,
+        'list_jawaban'   => $list_jw_soal,
+        'jml_benar'    => 0,
+        'nilai'      => 0,
+        'nilai_bobot'  => 0,
+        'tgl_mulai'    => $time_mulai,
+        'tgl_selesai'  => $waktu_selesai,
+        'status'    => 'Y'
+      ];
+
+      $masuk = [
+        'id_tryout'    => $ujian->tryout_id,
+        'id_mahasiswa'  => $mhs->id_mahasiswa,
+        'nama'      => $mhs->nama,
+      ];
+
+      // $input_tpa = [
+      // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
+      // 	'id_tryout'		=> $ujian->tryout_id,
+      // ];
+
+      // $input_tbi = [
+      // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
+      // 	'id_tryout'		=> $ujian->tryout_id,
+      // ];
+
+      // $input_twk = [
+      // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
+      // 	'id_tryout'		=> $ujian->tryout_id,
+      // ];
+
+      // $input_tiu = [
+      // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
+      // 	'id_tryout'		=> $ujian->tryout_id,
+      // ];
+
+      $get_nama = $this->soal->getNamaUjian($id);
+
+
+      // $this->master->create('to_tpa', $input_tpa);
+      // $this->master->create('to_tbi', $input_tbi);
+
+      if (empty($check_mhs)) {
+        $this->master->create('h_tryout', $masuk);
+      }
+
+      $this->master->create('h_ujian', $input);
+
+      // Setelah insert wajib refresh dulu
+      redirect('ujian/index/' . $id, 'location', 301);
     }
     $q_soal = $h_ujian->row();
     $urut_soal     = explode(",", $q_soal->list_jawaban);
