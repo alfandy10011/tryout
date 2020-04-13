@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-3">
-        <div class="card animated fadeIn slow" style="width: 18rem;">
+        <div class="card animated fadeIn fast" style="width: 18rem;">
             <img class="card-img-top" src="assets/dist/img/user1.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Nama : <?= $profil->nama ?></h5>
@@ -19,7 +19,7 @@
     </div>
     <div class="col-lg-9">
     <div class="container">
-    <table class="table animated fadeIn slow">
+    <table class="table animated fadeIn fast">
         <thead>
             <tr>
             </tr>

@@ -100,7 +100,7 @@
 <?php foreach($ujian as $u) : ?>
 
 <div class="col-sm-3 mx-3 my-2">
-    <div class="card animated fadeIn slow" style="width: 18rem;">
+    <div class="card animated fadeIn fast" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title text-primary"><?= $u->nama_ujian?></h5>
         <p class="card-text">Token : <strong><?=$u->token ?></strong></p>

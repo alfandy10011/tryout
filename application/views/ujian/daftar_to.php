@@ -8,7 +8,7 @@ foreach ($jml_to as $key => $value) :
 ?>
 
     <div class="col-sm-3">
-      <div class="card animated fadeIn slow" style="width: 18rem;">
+      <div class="card animated fadeIn fast" style="width: 18rem;">
         <!-- <img class="card-img-top" class= "img-fluid" src="../assets/dist/img/Asset 6.png" alt="Card image cap"> -->
         <div class="card-body ">
           <h5 class="card-title">Tryout <?= $sub_value; ?></h5>

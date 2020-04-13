@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <form method="post" action="<?php base_url('utilities/contact') ?>" id="kritikmasukan" class="animated fadeIn slow">
+            <form method="post" action="<?php base_url('utilities/contact') ?>" id="kritikmasukan" class="animated fadeIn fast">
                 <div class="form-group">
                     <label for="judul">Judul</label>
                     <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul">

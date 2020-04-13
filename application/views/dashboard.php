@@ -75,11 +75,11 @@
 <div class="row">
     <div class="col-sm-4">
         <div class="card shadow mb-4">
-            <div class="card-header py-3 d-flex animated fadeIn slow">
+            <div class="card-header py-3 d-flex animated fadeIn fast">
                 <h5>Informasi Akun</h5>
                 <a class="btn btn-success btn-sm ml-auto" href="<?=base_url('profil/edit')?>"> Edit Profil </a>
             </div>
-            <table class="table table-striped animated fadeIn slow">
+            <table class="table table-striped animated fadeIn fast">
                 <tr>
                     <th>ID</th>
                     <td><?=$mahasiswa->nim?></td>
@@ -112,7 +112,7 @@
         </div>
     </div>
     <div class="col-sm-8">
-        <div class="card shadow mb-4 animated fadeIn slow">
+        <div class="card shadow mb-4 animated fadeIn fast">
             <div class="card-header py-3">
                 <h3 class="box-title">Petunjuk Pengerjaan Tryout</h3>
             </div>
