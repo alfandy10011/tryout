@@ -513,7 +513,7 @@ class Ujian extends CI_Controller
         $html .= '<input type="hidden" name="id_soal_' . $no . '" value="' . $s->id_soal . '">';
         $html .= '<input type="hidden" name="rg_' . $no . '" id="rg_' . $no . '" value="' . $vrg . '">';
         $html .= '<div class="step" id="widget_' . $no . '">';
-        $html .= '<div class="text-center"><div class="w-25">' . tampil_media($path . $s->file) . '</div></div>' . $s->soal . '<div class="funkyradio">';
+        $html .= '<div class="text-center"><div class="w-50">' . tampil_media($path . $s->file) . '</div></div>' . $s->soal . '<div class="funkyradio">';
         for ($j = 0; $j < $ujian->jumlah_opsi; $j++) {
           $opsi       = "opsi_" . $arr_opsi[$j];
           $file       = "file_" . $arr_opsi[$j];

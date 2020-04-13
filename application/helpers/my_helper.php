@@ -37,7 +37,7 @@ function tampil_media($file,$width="",$height="") {
 
 		if (in_array($eks, $eks_image)) {
 			if (is_file("./".$file)) {
-				$ret .= '<img class="thumbnail w-100" src="'.base_url().$file.'" style="width: '.$width.'; height: '.$height.';">';
+				$ret .= '<img class="w-100" src="'.base_url().$file.'" style="width: '.$width.'; height: '.$height.';">';
 			} else {
 				$ret .= '';
 			}

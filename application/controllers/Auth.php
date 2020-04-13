@@ -100,16 +100,16 @@ class Auth extends CI_Controller
   }
 
   // private function _sendEmail($token, $type){
-  // 	$config = [
-  // 		'protocol'	=> 'smtp',
-  // 		'smtp_host'	=> 'ssl://smtp.googlemail.com',
-  // 		'smtp_user' => 'ambiseducation@gmail.com',
-  // 		'smtp_pass' => 'pratamasatria500',
-  // 		'smtp_port' => 465,
-  // 		'mailtype'  => 'html',
-  // 		'charset' 	=> 'utf-8',
-  // 		'newline'	=> "\r\n",
-  // 	];
+  	// $config = [
+  	// 	'protocol'	=> 'smtp',
+  	// 	'smtp_host'	=> 'ssl://smtp.googlemail.com',
+  	// 	'smtp_user' => 'ambiseducation@gmail.com',
+  	// 	'smtp_pass' => 'pratamasatria500',
+  	// 	'smtp_port' => 465,
+  	// 	'mailtype'  => 'html',
+  	// 	'charset' 	=> 'utf-8',
+  	// 	'newline'	=> "\r\n",
+  	// ];
 
   // 	$this->load->library('email', $config);
   // 	$this->email->initialize($config);
@@ -273,6 +273,7 @@ class Auth extends CI_Controller
    *
    * @param string|null $code The reset code
    */
+  
   public function reset_password($code = NULL)
   {
     if (!$code) {

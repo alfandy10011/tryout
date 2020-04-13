@@ -41,7 +41,11 @@
                     </div>
                   </div>
                   <div>
-                    <!-- <div class="small text-gray-500">December 12, 2019</div> -->
+                    <div class="small text-gray-500">
+                    <script>
+                        moment().format('MMMM Do YYYY, h:mm:ss a');
+                    </script>
+                    </div>
                     <span class="font-weight-bold">Selamat datang di Siap Tryout!</span>
                   </div>
                 </a>
