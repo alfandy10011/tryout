@@ -249,16 +249,14 @@ class Ujian extends CI_Controller
 
     $ujian = $this->ujian->getListUjian($this->mhs->id_mahasiswa, $this->mhs->kelas_id, $id);
     $user = $this->ion_auth->user()->row();
+    $mahasiswa = $this->ujian->getIdMahasiswa($user->username);
 
     $data = [
       'user'     => $user,
       'judul'    => 'Tryout',
       'subjudul'  => 'Daftar Tryout',
-      'mhs'     => $this->ujian->getIdMahasiswa($user->username),
+      'mhs'     => $mahasiswa,
       'ujian'    => $ujian,
-      // 'nilai'		=>
-      // 'hasil'		=> $this->ujian->HslUjian($id, $mhs->id_mahasiswa)->row(),
-      // 'ujian'		=> $this->ujian->getUjianById($id)
     ];
     $this->load->view('_templates/dashboard/_header.php', $data);
     $this->load->view('ujian/list');
@@ -352,7 +350,7 @@ class Ujian extends CI_Controller
       'subjudul'  => 'Token Ujian',
       'mhs'     => $this->ujian->getIdMahasiswa($user->username),
       'ujian'    => $this->ujian->getUjianById($id),
-      'encrypted_id' => urlencode($this->encryption->encrypt($id))
+      'ujian_id' => $id,
     ];
     $this->load->view('_templates/topnav/_header.php', $data);
     $this->load->view('ujian/token');
@@ -377,25 +375,15 @@ class Ujian extends CI_Controller
     $this->output_json(['key' => $key]);
   }
 
-  public function index()
+  public function index($id)
   {
     $this->akses_mahasiswa();
-    $key = $this->input->get('key', true);
-    $id  = $this->encryption->decrypt(rawurldecode($key));
-    // $id_tryout;
-
     $ujian     = $this->ujian->getUjianById($id);
     $soal     = $this->ujian->getSoal($id);
-
-
     $mhs    = $this->mhs;
     $check_mhs  = $this->soal->getHasilTryout($mhs->id_mahasiswa);
     $h_ujian   = $this->ujian->HslUjian($id, $mhs->id_mahasiswa);
-    $cek_nama   = $this->soal->getNamaUjian($id);
-
-    $cek_sudah_ikut = $h_ujian->num_rows();
-
-    if ($cek_sudah_ikut < 1) {
+    if ($h_ujian->num_rows() < 1 && ($h_ujian->selesai == null || $h_ujian->selesai == false)) {
       $soal_urut_ok   = array();
       $i = 0;
       foreach ($soal as $s) {
@@ -480,11 +468,9 @@ class Ujian extends CI_Controller
       $this->master->create('h_ujian', $input);
 
       // Setelah insert wajib refresh dulu
-      redirect('ujian/?key=' . urlencode($key), 'location', 301);
+      redirect('ujian/index/' . $id, 'location', 301);
     }
-
     $q_soal = $h_ujian->row();
-
     $urut_soal     = explode(",", $q_soal->list_jawaban);
     $soal_urut_ok  = array();
     for ($i = 0; $i < sizeof($urut_soal); $i++) {
@@ -593,9 +579,9 @@ class Ujian extends CI_Controller
 
     // Utility
     $key = $this->input->get('key', true);
-    $id  = $this->encryption->decrypt(rawurldecode($key));
-    $ujian = $this->ujian->getUjianById($id);
-    
+    // $id  = $this->encryption->decrypt(rawurldecode($key));
+    // $ujian = $this->ujian->getUjianById($id);
+
     // var_dump($ujian);
     // die();
     $mhs  = $this->mhs->id_mahasiswa;
@@ -663,7 +649,8 @@ class Ujian extends CI_Controller
       'nilai'      => number_format(floor($nilai), 0),
       'nilai_bobot'  => number_format(floor($nilai_bobot), 0),
       'nilai_tkp'    => $poin_tkp,
-      'status'    => 'N'
+      'status'    => 'N',
+      'selesai' => true
     ];
 
     $update_tpa = [
