@@ -314,14 +314,14 @@ INSERT INTO `mahasiswa` (`id_mahasiswa`, `nama`, `nim`, `email`, `sekolah`, `pil
 
 CREATE TABLE `matkul` (
   `id_matkul` int(11) NOT NULL,
-  `nama_matkul` varchar(50) NOT NULL
+  `nama_mataujian` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `matkul`
 --
 
-INSERT INTO `matkul` (`id_matkul`, `nama_matkul`) VALUES
+INSERT INTO `matkul` (`id_matkul`, `nama_mataujian`) VALUES
 (1, 'TBI01'),
 (2, 'TPA01'),
 (3, 'TWK01'),

@@ -36,7 +36,7 @@
                     <label>Kelas</label>
                     <select id="kelas" multiple="multiple" name="kelas_id[]" class="form-control select2" style="width: 100%!important">
                         <?php foreach ($kelas as $k) : ?>
-                            <option value="<?=$k->id_kelas?>"><?=$k->nama_kelas?> - <?=$k->nama_jurusan?></option>
+                            <option value="<?=$k->id_kelas?>"><?=$k->nama_kelas?> - <?=$k->nama_seleksi?></option>
                         <?php endforeach; ?>
                     </select>
                     <small class="help-block text-right"></small>

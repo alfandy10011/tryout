@@ -14,14 +14,14 @@
                             <select name="dosen_id" required="required" id="dosen_id" class="select2 form-group" style="width:100% !important">
                                 <option value="" disabled selected>Pilih Dosen</option>
                                 <?php foreach ($dosen as $d) : ?>
-                                    <option value="<?=$d->id_dosen?>:<?=$d->matkul_id?>"><?=$d->nama_dosen?> (<?=$d->nama_matkul?>)</option>
+                                    <option value="<?=$d->id_dosen?>:<?=$d->mataujian_id?>"><?=$d->nama_dosen?> (<?=$d->nama_mataujian?>)</option>
                                 <?php endforeach; ?>
                             </select>
                             <small class="help-block" style="color: #dc3545"><?=form_error('dosen_id')?></small>
                             <?php else : ?>
                             <input type="hidden" name="dosen_id" value="<?=$dosen->id_dosen;?>">
-                            <input type="hidden" name="matkul_id" value="<?=$dosen->matkul_id;?>">
-                            <input type="text" readonly="readonly" class="form-control" value="<?=$dosen->nama_dosen; ?> (<?=$dosen->nama_matkul; ?>)">
+                            <input type="hidden" name="mataujian_id" value="<?=$dosen->mataujian_id;?>">
+                            <input type="text" readonly="readonly" class="form-control" value="<?=$dosen->nama_dosen; ?> (<?=$dosen->nama_mataujian; ?>)">
                             <?php endif; ?>
                         </div>
                         

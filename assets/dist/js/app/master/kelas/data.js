@@ -52,7 +52,7 @@ $(document).ready(function() {
         searchable: false
       },
       { data: "nama_kelas" },
-      { data: "nama_jurusan" },
+      { data: "nama_seleksi" },
       {
         data: "bulk_select",
         orderable: false,
@@ -140,21 +140,21 @@ $(document).ready(function() {
   });
 });
 
-function load_jurusan() {
-  var jurusan = $('select[name="nama_jurusan"]');
-  jurusan.children("option:not(:first)").remove();
+function load_seleksi() {
+  var seleksi = $('select[name="nama_seleksi"]');
+  seleksi.children("option:not(:first)").remove();
 
   ajaxcsrf(); // get csrf token
   $.ajax({
-    url: base_url + "jurusan/load_jurusan",
+    url: base_url + "seleksi/load_seleksi",
     type: "GET",
     success: function(data) {
       //console.log(data);
       if (data.length) {
         var dataJurusan;
         $.each(data, function(key, val) {
-          dataJurusan = `<option value="${val.id_jurusan}">${val.nama_jurusan}</option>`;
-          jurusan.append(dataJurusan);
+          dataJurusan = `<option value="${val.id_seleksi}">${val.nama_seleksi}</option>`;
+          seleksi.append(dataJurusan);
         });
       }
     }

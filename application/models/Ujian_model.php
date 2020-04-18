@@ -6,9 +6,9 @@ class Ujian_model extends CI_Model
 
   public function getDataUjian($id)
   {
-    $this->datatables->select('a.id_ujian, a.token, a.nama_ujian, b.nama_matkul, a.jumlah_soal, CONCAT(a.tgl_mulai, " <br/> (", a.waktu, " Menit)") as waktu, a.jenis');
+    $this->datatables->select('a.id_ujian, a.token, a.nama_ujian, b.nama_mataujian, a.jumlah_soal, CONCAT(a.tgl_mulai, " <br/> (", a.waktu, " Menit)") as waktu, a.jenis');
     $this->datatables->from('m_ujian a');
-    $this->datatables->join('matkul b', 'a.matkul_id = b.id_matkul');
+    $this->datatables->join('mataujian b', 'a.mataujian_id = b.id_mataujian');
     if ($id !== null) {
       $this->datatables->where('dosen_id', $id);
     }
@@ -18,21 +18,21 @@ class Ujian_model extends CI_Model
   public function getListUjian($id, $kelas, $id_tryout)
   {
     $this->db->select("
-          m_ujian.matkul_id,
+          m_ujian.mataujian_id,
           m_ujian.id_ujian,
           m_ujian.token,
           m_ujian.nama_ujian,
           m_ujian.tryout_id,
           m_ujian.jumlah_soal,
-          matkul.nama_matkul,
+          mataujian.nama_mataujian,
           dosen.nama_dosen,
           kelas.nama_kelas,
-          CONCAT(m_ujian.tgl_mulai, ' <br/> (', m_ujian.waktu, ' Menit)') as waktu,  (SELECT COUNT(id) FROM h_ujian WHERE h_ujian.mahasiswa_id = {$id} AND h_ujian.ujian_id = m_ujian.id_ujian) AS ada,
+          CONCAT(m_ujian.tgl_mulai, ' <br/> (', m_ujian.waktu, ' Menit)') as waktu,  (SELECT COUNT(id) FROM h_ujian WHERE h_ujian.member_id = {$id} AND h_ujian.ujian_id = m_ujian.id_ujian) AS ada,
           h_ujian.selesai,
           ");
 
     $this->db->from('m_ujian');
-    $this->db->join('matkul', 'm_ujian.matkul_id = matkul.id_matkul');
+    $this->db->join('mataujian', 'm_ujian.mataujian_id = mataujian.id_mataujian');
     $this->db->join('kelas_dosen', "m_ujian.dosen_id = kelas_dosen.dosen_id");
     $this->db->join('kelas', 'kelas_dosen.kelas_id = kelas.id_kelas');
     $this->db->join('dosen', 'dosen.id_dosen = kelas_dosen.dosen_id');
@@ -53,11 +53,11 @@ class Ujian_model extends CI_Model
       $get = "generate";
     }
 
-    $this->$db->select('d.id, a.nama, b.nama_kelas, c.nama_jurusan, d.jml_benar, d.jml_salah, d.nilai');
-    $this->$db->from('mahasiswa a');
+    $this->$db->select('d.id, a.nama, b.nama_kelas, c.nama_seleksi, d.jml_benar, d.jml_salah, d.nilai');
+    $this->$db->from('member a');
     $this->$db->join('kelas b', 'a.kelas_id=b.id_kelas');
-    $this->$db->join('jurusan c', 'b.jurusan_id=c.id_jurusan');
-    $this->$db->join('h_ujian d', 'a.id_mahasiswa=d.mahasiswa_id');
+    $this->$db->join('seleksi c', 'b.seleksi_id=c.id_seleksi');
+    $this->$db->join('h_ujian d', 'a.id_member=d.member_id');
     $this->$db->where(['d.id_tryout' => $id]);
     return $this->$db->$get();
   }
@@ -83,7 +83,7 @@ class Ujian_model extends CI_Model
     $this->db->select('*');
     $this->db->from('m_ujian a');
     $this->db->join('dosen b', 'a.dosen_id=b.id_dosen');
-    $this->db->join('matkul c', 'a.matkul_id=c.id_matkul');
+    $this->db->join('mataujian c', 'a.mataujian_id=c.id_mataujian');
     $this->db->where('id_ujian', $id);
     return $this->db->get()->row();
   }
@@ -102,13 +102,13 @@ class Ujian_model extends CI_Model
     return $this->db->get()->row();
   }
 
-  public function getIdMahasiswa($nim)
+  public function getIdMahasiswa($username)
   {
     $this->db->select('*');
-    $this->db->from('mahasiswa a');
+    $this->db->from('member a');
     $this->db->join('kelas b', 'a.kelas_id=b.id_kelas');
-    $this->db->join('jurusan c', 'b.jurusan_id=c.id_jurusan');
-    $this->db->where('nim', $nim);
+    $this->db->join('seleksi c', 'b.seleksi_id=c.id_seleksi');
+    $this->db->where('username', $username);
     return $this->db->get()->row();
   }
 
@@ -117,7 +117,7 @@ class Ujian_model extends CI_Model
     $this->db->select('*, UNIX_TIMESTAMP(tgl_selesai) as waktu_habis');
     $this->db->from('h_ujian');
     $this->db->where('ujian_id', $id);
-    $this->db->where('mahasiswa_id', $mhs);
+    $this->db->where('member_id', $mhs);
     return $this->db->get();
   }
 
@@ -129,7 +129,7 @@ class Ujian_model extends CI_Model
     $this->db->select('id_soal, soal, file, tipe_file, opsi_a, opsi_b, opsi_c, opsi_d, opsi_e, jawaban');
     $this->db->from('tb_soal');
     $this->db->where('dosen_id', $ujian->dosen_id);
-    $this->db->where('matkul_id', $ujian->matkul_id);
+    $this->db->where('mataujian_id', $ujian->mataujian_id);
     $this->db->order_by($order);
     $this->db->limit($ujian->jumlah_soal);
     return $this->db->get()->result();
@@ -154,10 +154,10 @@ class Ujian_model extends CI_Model
   public function getHasilUjian($nip = null)
   {
     $this->datatables->select('b.id_ujian, b.nama_ujian, b.jumlah_soal, CONCAT(b.waktu, " Menit") as waktu, b.tgl_mulai');
-    $this->datatables->select('c.nama_matkul, d.nama_dosen');
+    $this->datatables->select('c.nama_mataujian, d.nama_dosen');
     $this->datatables->from('h_ujian a');
     $this->datatables->join('m_ujian b', 'a.ujian_id = b.id_ujian');
-    $this->datatables->join('matkul c', 'b.matkul_id = c.id_matkul');
+    $this->datatables->join('mataujian c', 'b.mataujian_id = c.id_mataujian');
     $this->datatables->join('dosen d', 'b.dosen_id = d.id_dosen');
     $this->datatables->group_by('b.id_ujian');
     if ($nip !== null) {
@@ -175,11 +175,11 @@ class Ujian_model extends CI_Model
       $db = "datatables";
       $get = "generate";
     }
-    $this->$db->select('d.id, a.nama, b.nama_kelas, c.nama_jurusan, d.jml_benar, d.nilai');
-    $this->$db->from('mahasiswa a');
+    $this->$db->select('d.id, a.nama, b.nama_kelas, c.nama_seleksi, d.jml_benar, d.nilai');
+    $this->$db->from('member a');
     $this->$db->join('kelas b', 'a.kelas_id=b.id_kelas');
-    $this->$db->join('jurusan c', 'b.jurusan_id=c.id_jurusan');
-    $this->$db->join('h_ujian d', 'a.id_mahasiswa=d.mahasiswa_id');
+    $this->$db->join('seleksi c', 'b.seleksi_id=c.id_seleksi');
+    $this->$db->join('h_ujian d', 'a.id_member=d.member_id');
     $this->$db->where(['d.id_tryout' => $id]);
     return $this->db->$get();
   }
@@ -200,20 +200,20 @@ class Ujian_model extends CI_Model
     return $this->db->get()->result_array();
   }
 
-  public function getEvaluasiHasil($tryout_id, $id_mahasiswa)
+  public function getEvaluasiHasil($tryout_id, $id_member)
   {
     $this->db->select('*');
     $this->db->from('h_tryout');
     $this->db->where('id_tryout', $tryout_id);
-    $this->db->where('id_mahasiswa', $id_mahasiswa);
+    $this->db->where('id_member', $id_member);
     return $this->db->get();
   }
 
   public function getPrediksiKelulusan($id)
   {
     $this->db->select('*');
-    $this->db->from('mahasiswa');
-    $this->db->where('id_mahasiswa', $id);
+    $this->db->from('member');
+    $this->db->where('id_member', $id);
     return $this->db->get();
   }
 

@@ -35,10 +35,10 @@ class Master_model extends CI_Model {
 
     public function getDataKelas()
     {
-        $this->datatables->select('id_kelas, nama_kelas, id_jurusan, nama_jurusan');
+        $this->datatables->select('id_kelas, nama_kelas, id_seleksi, nama_seleksi');
         $this->datatables->from('kelas');
-        $this->datatables->join('jurusan', 'jurusan_id=id_jurusan');
-        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_kelas, nama_kelas, id_jurusan, nama_jurusan');        
+        $this->datatables->join('seleksi', 'seleksi_id=id_seleksi');
+        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_kelas, nama_kelas, id_seleksi, nama_seleksi');        
         return $this->datatables->generate();
     }
 
@@ -56,17 +56,17 @@ class Master_model extends CI_Model {
 
     public function getDataJurusan()
     {
-        $this->datatables->select('id_jurusan, nama_jurusan');
-        $this->datatables->from('jurusan');
-        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_jurusan, nama_jurusan');
+        $this->datatables->select('id_seleksi, nama_seleksi');
+        $this->datatables->from('seleksi');
+        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_seleksi, nama_seleksi');
         return $this->datatables->generate();
     }
 
     public function getJurusanById($id)
     {
-        $this->db->where_in('id_jurusan', $id);
-        $this->db->order_by('nama_jurusan');
-        $query = $this->db->get('jurusan')->result();
+        $this->db->where_in('id_seleksi', $id);
+        $this->db->order_by('nama_seleksi');
+        $query = $this->db->get('seleksi')->result();
         return $query;
     }
 
@@ -76,31 +76,31 @@ class Master_model extends CI_Model {
 
     public function getDataMahasiswa()
     {
-        $this->datatables->select('a.id_mahasiswa, a.nama, a.nim, a.email, b.nama_kelas, c.nama_jurusan');
-        $this->datatables->select('(SELECT COUNT(id) FROM users WHERE username = a.nim) AS ada');
-        $this->datatables->from('mahasiswa a');
+        $this->datatables->select('a.id_member, a.nama, a.username, a.email, b.nama_kelas, c.nama_seleksi');
+        $this->datatables->select('(SELECT COUNT(id) FROM users WHERE username = a.username) AS ada');
+        $this->datatables->from('member a');
         $this->datatables->join('kelas b', 'a.kelas_id=b.id_kelas');
-        $this->datatables->join('jurusan c', 'b.jurusan_id=c.id_jurusan');
+        $this->datatables->join('seleksi c', 'b.seleksi_id=c.id_seleksi');
         return $this->datatables->generate();
     }
 
     public function getMahasiswaById($id)
     {
         $this->db->select('*');
-        $this->db->from('mahasiswa');
+        $this->db->from('member');
         $this->db->join('kelas', 'kelas_id=id_kelas');
-        $this->db->join('jurusan', 'jurusan_id=id_jurusan');
-        $this->db->where(['id_mahasiswa' => $id]);
+        $this->db->join('seleksi', 'seleksi_id=id_seleksi');
+        $this->db->where(['id_member' => $id]);
         return $this->db->get()->row();
     }
 
     public function getJurusan()
     {
-        $this->db->select('id_jurusan, nama_jurusan');
+        $this->db->select('id_seleksi, nama_seleksi');
         $this->db->from('kelas');
-        $this->db->join('jurusan', 'jurusan_id=id_jurusan');
-        $this->db->order_by('nama_jurusan', 'ASC');
-        $this->db->group_by('id_jurusan');
+        $this->db->join('seleksi', 'seleksi_id=id_seleksi');
+        $this->db->order_by('nama_seleksi', 'ASC');
+        $this->db->group_by('id_seleksi');
         $query = $this->db->get();
         return $query->result();
     }
@@ -108,32 +108,32 @@ class Master_model extends CI_Model {
     public function getAllJurusan($id = null)
     {
         if($id === null){
-            $this->db->order_by('nama_jurusan', 'ASC');
-            return $this->db->get('jurusan')->result();    
+            $this->db->order_by('nama_seleksi', 'ASC');
+            return $this->db->get('seleksi')->result();    
         }else{
-            $this->db->select('jurusan_id');
-            $this->db->from('jurusan_matkul');
-            $this->db->where('matkul_id', $id);
-            $jurusan = $this->db->get()->result();
-            $id_jurusan = [];
-            foreach ($jurusan as $j) {
-                $id_jurusan[] = $j->jurusan_id;
+            $this->db->select('seleksi_id');
+            $this->db->from('seleksi_mataujian');
+            $this->db->where('mataujian_id', $id);
+            $seleksi = $this->db->get()->result();
+            $id_seleksi = [];
+            foreach ($seleksi as $j) {
+                $id_seleksi[] = $j->seleksi_id;
             }
-            if($id_jurusan === []){
-                $id_jurusan = null;
+            if($id_seleksi === []){
+                $id_seleksi = null;
             }
             
             $this->db->select('*');
-            $this->db->from('jurusan');
-            $this->db->where_not_in('id_jurusan', $id_jurusan);
-            $matkul = $this->db->get()->result();
-            return $matkul;
+            $this->db->from('seleksi');
+            $this->db->where_not_in('id_seleksi', $id_seleksi);
+            $mataujian = $this->db->get()->result();
+            return $mataujian;
         }
     }
 
     public function getKelasByJurusan($id)
     {
-        $query = $this->db->get_where('kelas', array('jurusan_id'=>$id));
+        $query = $this->db->get_where('kelas', array('seleksi_id'=>$id));
         return $query->result();
     }
 
@@ -143,9 +143,9 @@ class Master_model extends CI_Model {
 
     public function getDataDosen()
     {
-        $this->datatables->select('a.id_dosen,a.nip, a.nama_dosen, a.email, a.matkul_id, b.nama_matkul, (SELECT COUNT(id) FROM users WHERE username = a.nip OR email = a.email) AS ada');
+        $this->datatables->select('a.id_dosen,a.nip, a.nama_dosen, a.email, a.mataujian_id, b.nama_mataujian, (SELECT COUNT(id) FROM users WHERE username = a.nip OR email = a.email) AS ada');
         $this->datatables->from('dosen a');
-        $this->datatables->join('matkul b', 'a.matkul_id=b.id_matkul');
+        $this->datatables->join('mataujian b', 'a.mataujian_id=b.id_mataujian');
         return $this->datatables->generate();
     }
 
@@ -161,24 +161,24 @@ class Master_model extends CI_Model {
 
     public function getDataMatkul()
     {
-        $this->datatables->select('id_matkul, nama_matkul');
-        $this->datatables->from('matkul');
+        $this->datatables->select('id_mataujian, nama_mataujian');
+        $this->datatables->from('mataujian');
         return $this->datatables->generate();
     }
 
     public function getAllMatkul()
     {
-        return $this->db->get('matkul')->result();
+        return $this->db->get('mataujian')->result();
     }
 
     public function getMatkulById($id, $single = false)
     {
         if($single === false){
-            $this->db->where_in('id_matkul', $id);
-            $this->db->order_by('nama_matkul');
-            $query = $this->db->get('matkul')->result();
+            $this->db->where_in('id_mataujian', $id);
+            $this->db->order_by('nama_mataujian');
+            $query = $this->db->get('mataujian')->result();
         }else{
-            $query = $this->db->get_where('matkul', array('id_matkul'=>$id))->row();
+            $query = $this->db->get_where('mataujian', array('id_mataujian'=>$id))->row();
         }
         return $query;
     }
@@ -222,9 +222,9 @@ class Master_model extends CI_Model {
     
     public function getAllKelas()
     {
-        $this->db->select('id_kelas, nama_kelas, nama_jurusan');
+        $this->db->select('id_kelas, nama_kelas, nama_seleksi');
         $this->db->from('kelas');
-        $this->db->join('jurusan', 'jurusan_id=id_jurusan');
+        $this->db->join('seleksi', 'seleksi_id=id_seleksi');
         $this->db->order_by('nama_kelas');
         return $this->db->get()->result();
     }
@@ -244,42 +244,42 @@ class Master_model extends CI_Model {
 
     public function getJurusanMatkul()
     {
-        $this->datatables->select('jurusan_matkul.id, matkul.id_matkul, matkul.nama_matkul, jurusan.id_jurusan, GROUP_CONCAT(jurusan.nama_jurusan) as nama_jurusan');
-        $this->datatables->from('jurusan_matkul');
-        $this->datatables->join('matkul', 'matkul_id=id_matkul');
-        $this->datatables->join('jurusan', 'jurusan_id=id_jurusan');
-        $this->datatables->group_by('matkul.nama_matkul');
+        $this->datatables->select('seleksi_mataujian.id, mataujian.id_mataujian, mataujian.nama_mataujian, seleksi.id_seleksi, GROUP_CONCAT(seleksi.nama_seleksi) as nama_seleksi');
+        $this->datatables->from('seleksi_mataujian');
+        $this->datatables->join('mataujian', 'mataujian_id=id_mataujian');
+        $this->datatables->join('seleksi', 'seleksi_id=id_seleksi');
+        $this->datatables->group_by('mataujian.nama_mataujian');
         return $this->datatables->generate();
     }
 
     public function getMatkul($id = null)
     {
-        $this->db->select('matkul_id');
-        $this->db->from('jurusan_matkul');
+        $this->db->select('mataujian_id');
+        $this->db->from('seleksi_mataujian');
         if($id !== null){
-            $this->db->where_not_in('matkul_id', [$id]);
+            $this->db->where_not_in('mataujian_id', [$id]);
         }
-        $matkul = $this->db->get()->result();
-        $id_matkul = [];
-        foreach ($matkul as $d) {
-            $id_matkul[] = $d->matkul_id;
+        $mataujian = $this->db->get()->result();
+        $id_mataujian = [];
+        foreach ($mataujian as $d) {
+            $id_mataujian[] = $d->mataujian_id;
         }
-        if($id_matkul === []){
-            $id_matkul = null;
+        if($id_mataujian === []){
+            $id_mataujian = null;
         }
 
-        $this->db->select('id_matkul, nama_matkul');
-        $this->db->from('matkul');
-        $this->db->where_not_in('id_matkul', $id_matkul);
+        $this->db->select('id_mataujian, nama_mataujian');
+        $this->db->from('mataujian');
+        $this->db->where_not_in('id_mataujian', $id_mataujian);
         return $this->db->get()->result();
     }
 
     public function getJurusanByIdMatkul($id)
     {
-        $this->db->select('jurusan.id_jurusan');
-        $this->db->from('jurusan_matkul');
-        $this->db->join('jurusan', 'jurusan_matkul.jurusan_id=jurusan.id_jurusan');
-        $this->db->where('matkul_id', $id);
+        $this->db->select('seleksi.id_seleksi');
+        $this->db->from('seleksi_mataujian');
+        $this->db->join('seleksi', 'seleksi_mataujian.seleksi_id=seleksi.id_seleksi');
+        $this->db->where('mataujian_id', $id);
         $query = $this->db->get()->result();
         return $query;
     }

@@ -22,8 +22,8 @@ class Profil extends CI_Controller{
     public function index(){
 
         $mhs		    = $this->mhs;
-        $id_mhs = $mhs->id_mahasiswa;
-        $pilihan = $this->ujian->getPrediksiKelulusan($mhs->id_mahasiswa)->row();
+        $id_mhs = $mhs->id_member;
+        $pilihan = $this->ujian->getPrediksiKelulusan($mhs->id_member)->row();
             
         $pilihan_1 = $pilihan->pilihan_1;
 		$pilihan_2 = $pilihan->pilihan_2;
@@ -52,7 +52,7 @@ class Profil extends CI_Controller{
     public function Edit(){
 
         $mhs		    = $this->mhs;
-        $id_mhs = $mhs->id_mahasiswa;
+        $id_mhs = $mhs->id_member;
 
         $data = [
 			'user' => $this->ion_auth->user()->row(),
@@ -77,7 +77,7 @@ class Profil extends CI_Controller{
         $pilihan_2	    = $this->input->post('pil_2', true);
         $pilihan_3	    = $this->input->post('pil_3', true);
         $mhs		    = $this->mhs;
-        $id_mhs         = $mhs->id_mahasiswa;
+        $id_mhs         = $mhs->id_member;
         
 
         $input = [
@@ -88,7 +88,7 @@ class Profil extends CI_Controller{
             'pilihan_3'     => $pilihan_3,
         ];
 
-        $this->master->update('mahasiswa', $input, 'id_mahasiswa', $id_mhs);
+        $this->master->update('member', $input, 'id_member', $id_mhs);
         $this->session->set_flashdata('flash', 'Diubah');
         redirect('dashboard');
     }

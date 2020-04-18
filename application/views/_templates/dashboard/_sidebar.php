@@ -2,8 +2,8 @@
 
       <?php 
 			$page = $this->uri->segment(1);
-			$master = ["jurusan", "kelas", "matkul", "dosen", "mahasiswa"];
-			$relasi = ["kelasdosen", "jurusanmatkul"];
+			$master = ["seleksi", "kelas", "mataujian", "dosen", "member"];
+			$relasi = ["kelasdosen", "seleksimataujian"];
 			$users = ["users"];
 			?>
 
@@ -44,11 +44,11 @@
         <div id="master" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Data Master:</h6>
-            <a class="collapse-item" href="<?=base_url('jurusan')?>">Fitur</a>
+            <a class="collapse-item" href="<?=base_url('seleksi')?>">Seleksi</a>
             <a class="collapse-item" href="<?=base_url('kelas')?>">Ujian Seleksi</a>
-            <a class="collapse-item" href="<?=base_url('matkul')?>">Mata Ujian</a>
+            <a class="collapse-item" href="<?=base_url('mataujian')?>">Mata Ujian</a>
             <a class="collapse-item" href="<?=base_url('dosen')?>">Judul Tryout</a>
-            <a class="collapse-item" href="<?=base_url('mahasiswa')?>">Member</a>
+            <a class="collapse-item" href="<?=base_url('member')?>">Member</a>
           </div>
         </div>
       </li>
@@ -62,7 +62,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Relasi:</h6>
             <a class="collapse-item" href="<?=base_url('kelasdosen')?>">Ujian Seleksi - Judul Tryout</a>
-            <a class="collapse-item" href="<?=base_url('jurusanmatkul')?>">Fitur - Mata Ujian</a>
+            <a class="collapse-item" href="<?=base_url('seleksimataujian')?>">Seleksi - Mata Ujian</a>
           </div>
         </div>
       </li>
@@ -107,13 +107,13 @@
       <!-- Menu 2 -->
 
       <!-- Heading  Tryout-->
-      <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+      <?php if( $this->ion_auth->in_group('member') ) : ?>
       <div class="sidebar-heading">
         Tryout
       </div>
       <?php endif; ?>
       <!-- Nav Item - Tryout -->
-      <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+      <?php if( $this->ion_auth->in_group('member') ) : ?>
       <li class="nav-item">
         <a class="nav-link" href="<?=base_url('ujian/daftar_to')?>">
           <i class="fas fa-fw fa-pen"></i>
@@ -121,7 +121,7 @@
       </li>
       <?php endif; ?>
       <!-- Nav Item - Tables -->
-      <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+      <?php if( $this->ion_auth->in_group('member') ) : ?>
       <li class="nav-item">
         <a class="nav-link" href="<?=base_url('hasilujian/daftar_ranking/')?>">
           <i class="fas fa-fw fa-table"></i>
@@ -131,13 +131,13 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-      <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+      <?php if( $this->ion_auth->in_group('member') ) : ?>
       <div class="sidebar-heading">
         Suplemen
       </div>
       <?php endif; ?>
 
-      <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+      <?php if( $this->ion_auth->in_group('member') ) : ?>
       <li class="nav-item">
         <a class="nav-link" href="<?=base_url('utilities/ebook')?>">
           <i class="fas fa-fw fa-book"></i>
@@ -150,13 +150,13 @@
       <!-- Menu 4 -->
 
       <!-- Heading -->
-      <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+      <?php if( $this->ion_auth->in_group('member') ) : ?>
       <div class="sidebar-heading">
         LAINNYA
       </div>
       <?php endif; ?>
       <!-- Nav Item - Charts -->
-      <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+      <?php if( $this->ion_auth->in_group('member') ) : ?>
       <li class="nav-item">
         <a class="nav-link" href="<?=base_url('utilities/panduan')?>">
           <i class="fas fa-fw fa-question"></i>
@@ -164,7 +164,7 @@
       </li>
       <?php endif; ?>
 
-      <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+      <?php if( $this->ion_auth->in_group('member') ) : ?>
       <li class="nav-item">
         <a class="nav-link" href="<?=base_url('utilities/contact')?>">
           <i class="fas fa-fw fa-address-book"></i>
@@ -172,7 +172,7 @@
       </li>
       <?php endif; ?>
 
-      <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+      <?php if( $this->ion_auth->in_group('member') ) : ?>
       <li class="nav-item">
         <a class="nav-link" href="<?=base_url('profil')?>">
           <i class="fas fa-fw fa-user"></i>

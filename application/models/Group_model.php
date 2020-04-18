@@ -7,7 +7,7 @@ class Group_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('groups');
-    $this->db->where('name', 'mahasiswa');
+    $this->db->where('name', 'member');
     return $this->db->get()->row()->id;
   }
 }

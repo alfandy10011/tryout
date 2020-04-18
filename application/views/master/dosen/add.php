@@ -27,11 +27,11 @@
                     <small class="help-block"></small>
                 </div>
                 <div class="form-group">
-                    <label for="matkul">Mata Kuliah</label>
-                    <select name="matkul" id="matkul" class="form-control select2" style="width: 100%!important">
+                    <label for="mataujian">Mata Kuliah</label>
+                    <select name="mataujian" id="mataujian" class="form-control select2" style="width: 100%!important">
                         <option value="" disabled selected>Pilih Mata Kuliah</option>
-                        <?php foreach ($matkul as $row) : ?>
-                            <option value="<?=$row->id_matkul?>"><?=$row->nama_matkul?></option>
+                        <?php foreach ($mataujian as $row) : ?>
+                            <option value="<?=$row->id_mataujian?>"><?=$row->nama_mataujian?></option>
                         <?php endforeach; ?>
                     </select>
                     <small class="help-block"></small>

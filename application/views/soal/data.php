@@ -9,15 +9,15 @@
 			</div>
 			<div class="form-group col-sm-4 text-center">
 				<?php if ( $this->ion_auth->is_admin() ) : ?>
-					<select id="matkul_filter" class="form-control select2" style="width:100% !important">
+					<select id="mataujian_filter" class="form-control select2" style="width:100% !important">
 						<option value="all">Semua Matkul</option>
-						<?php foreach ($matkul as $m) :?>
-							<option value="<?=$m->id_matkul?>"><?=$m->nama_matkul?></option>
+						<?php foreach ($mataujian as $m) :?>
+							<option value="<?=$m->id_mataujian?>"><?=$m->nama_mataujian?></option>
 						<?php endforeach; ?>
 					</select>
 				<?php endif; ?>
 				<?php if ( $this->ion_auth->in_group('dosen') ) : ?>				
-					<input id="matkul_id" value="<?=$matkul->nama_matkul;?>" type="text" readonly="readonly" class="form-control">
+					<input id="mataujian_id" value="<?=$mataujian->nama_mataujian;?>" type="text" readonly="readonly" class="form-control">
 				<?php endif; ?>
 			</div>
 			<div class="col-sm-4">
@@ -67,13 +67,13 @@
 <?php if ( $this->ion_auth->is_admin() ) : ?>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#matkul_filter').on('change', function(){
-		let id_matkul = $(this).val();
+	$('#mataujian_filter').on('change', function(){
+		let id_mataujian = $(this).val();
 		let src = '<?=base_url()?>soal/data';
 		let url;
 
-		if(id_matkul !== 'all'){
-			let src2 = src + '/' + id_matkul;
+		if(id_mataujian !== 'all'){
+			let src2 = src + '/' + id_mataujian;
 			url = $(this).prop('checked') === true ? src : src2;
 		}else{
 			url = src;
@@ -86,10 +86,10 @@ $(document).ready(function(){
 <?php if ( $this->ion_auth->in_group('dosen') ) : ?>
 <script type="text/javascript">
 $(document).ready(function(){
-	let id_matkul = '<?=$matkul->matkul_id?>';
-	let id_dosen = '<?=$matkul->id_dosen?>';
+	let id_mataujian = '<?=$mataujian->mataujian_id?>';
+	let id_dosen = '<?=$mataujian->id_dosen?>';
 	let src = '<?=base_url()?>soal/data';
-	let url = src + '/' + id_matkul + '/' + id_dosen;
+	let url = src + '/' + id_mataujian + '/' + id_dosen;
 
 	table.ajax.url(url).load();
 });

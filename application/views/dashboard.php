@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                     <th>Jenis</th>
-                    <td><?=$dosen->nama_matkul?></td>
+                    <td><?=$dosen->nama_mataujian?></td>
                 </tr>
                 <tr>
                     <th>Ujian Seleksi</th>
@@ -82,19 +82,19 @@
             <table class="table table-striped animated fadeIn fast">
                 <tr>
                     <th>ID</th>
-                    <td><?=$mahasiswa->nim?></td>
+                    <td><?=$member->username?></td>
                 </tr>
                 <tr>
                     <th>Nama</th>
-                    <td><?=$mahasiswa->nama?></td>
+                    <td><?=$member->nama?></td>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td><?=$mahasiswa->email?></td>
+                    <td><?=$member->email?></td>
                 </tr>
                 <tr>
                     <th>Asal Sekolah</th>
-                    <td><?=$mahasiswa->sekolah?></td>
+                    <td><?=$member->sekolah?></td>
                 </tr>
                 <tr>
                     <th>Pilihan 1</th>

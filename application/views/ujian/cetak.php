@@ -5,8 +5,8 @@ Dolore distinctio, at consequuntur magnam cupiditate voluptate hic ratione ea il
 <h2>Data Peserta</h2>
 <table id="data-peserta">
     <tr>
-        <th>NIM</th>
-        <td>{$mhs->nim}</td>
+        <th>Username</th>
+        <td>{$mhs->username}</td>
     </tr>
     <tr>
         <th>Nama</th>
@@ -18,14 +18,14 @@ Dolore distinctio, at consequuntur magnam cupiditate voluptate hic ratione ea il
     </tr>
     <tr>
         <th>Jurusan</th>
-        <td>{$mhs->nama_jurusan}</td>
+        <td>{$mhs->nama_seleksi}</td>
     </tr>
 </table>
 <h2>Data Ujian</h2>
 <table id="data-hasil">
     <tr>
         <th>Mata Kuliah</th>
-        <td>{$ujian->nama_matkul}</td>
+        <td>{$ujian->nama_mataujian}</td>
     </tr>
     <tr>
         <th>Nama Ujian</th>

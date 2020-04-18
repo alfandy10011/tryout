@@ -1,15 +1,17 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Dashboard extends CI_Controller
+{
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
-		if (!$this->ion_auth->logged_in()){
+		if (!$this->ion_auth->logged_in()) {
 			redirect('auth');
 		}
 		$this->load->model('Dashboard_model', 'dashboard');
-		$this->load->library(['datatables']);// Load Library Ignited-Datatables
+		$this->load->library(['datatables']); // Load Library Ignited-Datatables
 		$this->load->model('Master_model', 'master');
 		$this->load->model('Ujian_model', 'ujian');
 		$this->user = $this->ion_auth->user()->row();
@@ -20,8 +22,8 @@ class Dashboard extends CI_Controller {
 		$box = [
 			[
 				'box' 		=> 'light-blue',
-				'total' 	=> $this->dashboard->total('jurusan'),
-				'title'		=> 'Fitur',
+				'total' 	=> $this->dashboard->total('seleksi'),
+				'title'		=> 'Seleksi',
 				'icon'		=> 'graduation-cap'
 			],
 			[
@@ -38,7 +40,7 @@ class Dashboard extends CI_Controller {
 			],
 			[
 				'box' 		=> 'red',
-				'total' 	=> $this->dashboard->total('mahasiswa'),
+				'total' 	=> $this->dashboard->total('member'),
 				'title'		=> 'Member',
 				'icon'		=> 'user'
 			],
@@ -56,17 +58,17 @@ class Dashboard extends CI_Controller {
 			'subjudul'	=> 'Data Aplikasi',
 		];
 
-		if ( $this->ion_auth->is_admin() ) {
+		if ($this->ion_auth->is_admin()) {
 			$data['info_box'] = $this->admin_box();
-		} elseif ( $this->ion_auth->in_group('dosen') ) {
-			$matkul = ['matkul' => 'dosen.matkul_id=matkul.id_matkul'];
-			$data['dosen'] = $this->dashboard->get_where('dosen', 'nip', $user->username, $matkul)->row();
+		} elseif ($this->ion_auth->in_group('dosen')) {
+			$mataujian = ['mataujian' => 'dosen.mataujian_id=mataujian.id_mataujian'];
+			$data['dosen'] = $this->dashboard->get_where('dosen', 'nip', $user->username, $mataujian)->row();
 
 			$kelas = ['kelas' => 'kelas_dosen.kelas_id=kelas.id_kelas'];
-			$data['kelas'] = $this->dashboard->get_where('kelas_dosen', 'dosen_id' , $data['dosen']->id_dosen, $kelas, ['nama_kelas'=>'ASC'])->result();
-		}else{
+			$data['kelas'] = $this->dashboard->get_where('kelas_dosen', 'dosen_id', $data['dosen']->id_dosen, $kelas, ['nama_kelas' => 'ASC'])->result();
+		} else {
 			$mhs 	= $this->ujian->getIdMahasiswa($this->user->username);
-			$pilihan = $this->ujian->getPrediksiKelulusan($mhs->id_mahasiswa)->row();
+			$pilihan = $this->ujian->getPrediksiKelulusan($mhs->id_member)->row();
 			$pilihan_1 = $pilihan->pilihan_1;
 			$pilihan_2 = $pilihan->pilihan_2;
 			$pilihan_3 = $pilihan->pilihan_3;
@@ -78,9 +80,9 @@ class Dashboard extends CI_Controller {
 
 			$join = [
 				'kelas b' 	=> 'a.kelas_id = b.id_kelas',
-				'jurusan c'	=> 'b.jurusan_id = c.id_jurusan'
+				'seleksi c'	=> 'b.seleksi_id = c.id_seleksi'
 			];
-			$data['mahasiswa'] = $this->dashboard->get_where('mahasiswa a', 'nim', $user->username, $join)->row();
+			$data['member'] = $this->dashboard->get_where('member a', 'username', $user->username, $join)->row();
 			$data['pilihan_1'] = $get_nama1;
 			$data['pilihan_2'] = $get_nama2;
 			$data['pilihan_3'] = $get_nama3;

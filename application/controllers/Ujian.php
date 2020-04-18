@@ -32,10 +32,10 @@ class Ujian extends CI_Controller
     }
   }
 
-  public function akses_mahasiswa()
+  public function akses_member()
   {
-    if (!$this->ion_auth->in_group('mahasiswa')) {
-      show_error('Halaman ini khusus untuk mahasiswa mengikuti ujian, <a href="' . base_url('dashboard') . '">Kembali ke menu awal</a>', 403, 'Akses Terlarang');
+    if (!$this->ion_auth->in_group('member')) {
+      show_error('Halaman ini khusus untuk member mengikuti ujian, <a href="' . base_url('dashboard') . '">Kembali ke menu awal</a>', 403, 'Akses Terlarang');
     }
   }
 
@@ -77,7 +77,7 @@ class Ujian extends CI_Controller
       'user'     => $user,
       'judul'    => 'Ujian',
       'subjudul'  => 'Tambah Ujian',
-      'matkul'  => $this->soal->getMatkulDosen($user->username),
+      'mataujian'  => $this->soal->getMatkulDosen($user->username),
       'dosen'    => $this->ujian->getIdDosen($user->username),
     ];
 
@@ -96,7 +96,7 @@ class Ujian extends CI_Controller
       'user'     => $user,
       'judul'    => 'Ujian',
       'subjudul'  => 'Edit Ujian',
-      'matkul'  => $this->soal->getMatkulDosen($user->username),
+      'mataujian'  => $this->soal->getMatkulDosen($user->username),
       'dosen'    => $this->ujian->getIdDosen($user->username),
       'ujian'    => $this->ujian->getUjianById($id),
     ];
@@ -136,7 +136,7 @@ class Ujian extends CI_Controller
 
     $method     = $this->input->post('method', true);
     $dosen_id     = $this->input->post('dosen_id', true);
-    $matkul_id     = $this->input->post('matkul_id', true);
+    $mataujian_id     = $this->input->post('mataujian_id', true);
     $nama_ujian   = $this->input->post('nama_ujian', true);
     $jumlah_soal   = $this->input->post('jumlah_soal', true);
     $jumlah_opsi  = $this->input->post('jumlah_opsi', true);
@@ -172,7 +172,7 @@ class Ujian extends CI_Controller
       ];
       if ($method === 'add') {
         $input['dosen_id']  = $dosen_id;
-        $input['matkul_id'] = $matkul_id;
+        $input['mataujian_id'] = $mataujian_id;
         $input['token']    = $token;
         $action = $this->master->create('m_ujian', $input);
       } else if ($method === 'edit') {
@@ -212,9 +212,9 @@ class Ujian extends CI_Controller
 
   public function list_json()
   {
-    $this->akses_mahasiswa();
+    $this->akses_member();
 
-    $list = $this->ujian->getListUjian($this->mhs->id_mahasiswa, $this->mhs->kelas_id, 1);
+    $list = $this->ujian->getListUjian($this->mhs->id_member, $this->mhs->kelas_id, 1);
     $this->output_json($list, false);
   }
 
@@ -245,28 +245,28 @@ class Ujian extends CI_Controller
 
   public function list($id)
   {
-    $this->akses_mahasiswa();
+    $this->akses_member();
 
-    $ujian = $this->ujian->getListUjian($this->mhs->id_mahasiswa, $this->mhs->kelas_id, $id);
+    $ujian = $this->ujian->getListUjian($this->mhs->id_member, $this->mhs->kelas_id, $id);
     $user = $this->ion_auth->user()->row();
-    $mahasiswa = $this->ujian->getIdMahasiswa($user->username);
+    $member = $this->ujian->getIdMahasiswa($user->username);
 
     $data = [
       'user'     => $user,
       'judul'    => 'Tryout',
       'subjudul'  => 'Daftar Tryout',
-      'mhs'     => $mahasiswa,
+      'mhs'     => $member,
       'ujian'    => $ujian,
     ];
     $this->load->view('_templates/dashboard/_header.php', $data);
-    $this->load->view('ujian/list');
+    $this->load->view('ujian/list', $data);
     $this->load->view('_templates/dashboard/_footer.php');
   }
 
   public function lihat_hasil($id)
   {
     $mhs   = $this->ujian->getIdMahasiswa($this->user->username);
-    $hasil   = $this->ujian->HslUjian($id, $mhs->id_mahasiswa)->row();
+    $hasil   = $this->ujian->HslUjian($id, $mhs->id_member)->row();
     $ujian   = $this->ujian->getUjianById($id);
 
     $data = [
@@ -341,7 +341,7 @@ class Ujian extends CI_Controller
 
   public function token($id)
   {
-    $this->akses_mahasiswa();
+    $this->akses_member();
     $user = $this->ion_auth->user()->row();
 
     $data = [
@@ -377,12 +377,12 @@ class Ujian extends CI_Controller
 
   public function index($id)
   {
-    $this->akses_mahasiswa();
+    $this->akses_member();
     $ujian     = $this->ujian->getUjianById($id);
     $soal     = $this->ujian->getSoal($id);
     $mhs    = $this->mhs;
-    $check_mhs  = $this->soal->getHasilTryout($mhs->id_mahasiswa);
-    $h_ujian   = $this->ujian->HslUjian($id, $mhs->id_mahasiswa);
+    $check_mhs  = $this->soal->getHasilTryout($mhs->id_member);
+    $h_ujian   = $this->ujian->HslUjian($id, $mhs->id_member);
     if ($h_ujian->num_rows() < 1 && ($h_ujian->selesai == null || $h_ujian->selesai == false)) {
       $soal_urut_ok   = array();
       $i = 0;
@@ -417,7 +417,7 @@ class Ujian extends CI_Controller
 
       $input = [
         'ujian_id'     => $id,
-        'mahasiswa_id'  => $mhs->id_mahasiswa,
+        'member_id'  => $mhs->id_member,
         'id_tryout'    => $ujian->tryout_id,
         'list_soal'    => $list_id_soal,
         'list_jawaban'   => $list_jw_soal,
@@ -431,27 +431,27 @@ class Ujian extends CI_Controller
 
       $masuk = [
         'id_tryout'    => $ujian->tryout_id,
-        'id_mahasiswa'  => $mhs->id_mahasiswa,
+        'id_member'  => $mhs->id_member,
         'nama'      => $mhs->nama,
       ];
 
       // $input_tpa = [
-      // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
+      // 	'id_member'	=> $mhs->id_member,
       // 	'id_tryout'		=> $ujian->tryout_id,
       // ];
 
       // $input_tbi = [
-      // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
+      // 	'id_member'	=> $mhs->id_member,
       // 	'id_tryout'		=> $ujian->tryout_id,
       // ];
 
       // $input_twk = [
-      // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
+      // 	'id_member'	=> $mhs->id_member,
       // 	'id_tryout'		=> $ujian->tryout_id,
       // ];
 
       // $input_tiu = [
-      // 	'id_mahasiswa'	=> $mhs->id_mahasiswa,
+      // 	'id_member'	=> $mhs->id_member,
       // 	'id_tryout'		=> $ujian->tryout_id,
       // ];
 
@@ -505,7 +505,7 @@ class Ujian extends CI_Controller
     // $dump_id_to = $this->soal->getIdTryoutById(91);
     // $ambil_id_to = $dump_id_to->id_tryout;
     // var_dump($ambil_id_to);
-    // $num = $check_mhs->id_mahasiswa;
+    // $num = $check_mhs->id_member;
     if (!empty($soal_urut_ok)) {
       foreach ($soal_urut_ok as $s) {
         $path = 'uploads/bank_soal/';
@@ -584,7 +584,7 @@ class Ujian extends CI_Controller
 
     // var_dump($ujian);
     // die();
-    $mhs  = $this->mhs->id_mahasiswa;
+    $mhs  = $this->mhs->id_member;
     $dump_id = $this->soal->getIdUjian($id_tes);
     $ambil_id = $dump_id->ujian_id;
     $cek_nama = $this->soal->getNamaUjian($ambil_id);
@@ -677,15 +677,15 @@ class Ujian extends CI_Controller
 
     // Input TPA
     if ($validasi_nama == "TPA" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_tpa, 'id_mahasiswa', $mhs);
+      $this->master->update('h_tryout', $update_tpa, 'id_member', $mhs);
     } else if ($validasi_nama == "TBI" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_tbi, 'id_mahasiswa', $mhs);
+      $this->master->update('h_tryout', $update_tbi, 'id_member', $mhs);
     } else if ($validasi_nama == "TWK" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_twk, 'id_mahasiswa', $mhs);
+      $this->master->update('h_tryout', $update_twk, 'id_member', $mhs);
     } else if ($validasi_nama == "TIU" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_tiu, 'id_mahasiswa', $mhs);
+      $this->master->update('h_tryout', $update_tiu, 'id_member', $mhs);
     } else if ($validasi_nama == "TKP" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_tkp, 'id_mahasiswa', $mhs);
+      $this->master->update('h_tryout', $update_tkp, 'id_member', $mhs);
     }
 
 

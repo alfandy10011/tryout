@@ -55,7 +55,7 @@ $(document).ready(function() {
         searchable: false
       },
       { data: "nama_dosen" },
-      { data: "nama_matkul" },
+      { data: "nama_mataujian" },
       { data: "soal" },
       { data: "created_on" }
     ],

@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group">
                     <label for="asal_sekolah">Asal Sekolah</label>
-                    <input autofocus="autofocus" onfocus="this.select()" placeholder="Asal Sekolah" type="text" class="form-control" name="asal_sekolah" value="<?= ($identitas->sekolah) ?>">
+                    <input placeholder="Asal Sekolah" type="text" class="form-control" name="asal_sekolah" value="<?= ($identitas->sekolah) ?>">
                     <small class="help-block"></small>
                 </div>
                 <div class="form-group">

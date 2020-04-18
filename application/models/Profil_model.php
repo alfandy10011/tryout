@@ -14,8 +14,8 @@ class Profil_model extends CI_Model
   public function editProfil($id)
   {
     $this->db->select('*');
-    $this->db->from('mahasiswa');
-    $this->db->where('id_mahasiswa', $id);
+    $this->db->from('member');
+    $this->db->where('id_member', $id);
     return $this->db->get()->row();
   }
 

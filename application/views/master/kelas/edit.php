@@ -40,10 +40,10 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <select required="required" name="jurusan_id[<?=$i?>]" class="input-sm form-control select2" style="width: 100%!important">
+                                        <select required="required" name="seleksi_id[<?=$i?>]" class="input-sm form-control select2" style="width: 100%!important">
                                             <option value="" disabled>-- Pilih --</option>
-                                            <?php foreach ($jurusan as $j) : ?>
-                                                <option <?= $row->jurusan_id == $j->id_jurusan ? "selected='selected'" : "" ?> value="<?=$j->id_jurusan?>"><?=$j->nama_jurusan?></option>
+                                            <?php foreach ($seleksi as $j) : ?>
+                                                <option <?= $row->seleksi_id == $j->id_seleksi ? "selected='selected'" : "" ?> value="<?=$j->id_seleksi?>"><?=$j->nama_seleksi?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <small class="help-block text-right"></small>

@@ -10,7 +10,7 @@
         <ul class="alert alert-info" style="padding-left: 40px">
             <li>Silahkan import data dari excel, menggunakan format yang sudah disediakan</li>
             <li>Data tidak boleh ada yang kosong, harus terisi semua.</li>
-            <li>Untuk data jurusan, hanya bisa diisi menggunakan ID Jurusan. <a data-toggle="modal" href="#jurusanId" style="text-decoration:none" class="btn btn-xs btn-primary">Lihat ID</a>.</li>
+            <li>Untuk data seleksi, hanya bisa diisi menggunakan ID Jurusan. <a data-toggle="modal" href="#seleksiId" style="text-decoration:none" class="btn btn-xs btn-primary">Lihat ID</a>.</li>
         </ul>
         <div class="text-center">
             <a href="<?= base_url('uploads/import/format/kelas.xlsx') ?>" class="btn-default btn">Download Format</a>
@@ -54,12 +54,12 @@
                                         <td class="<?= $data['kelas'] == null ? 'bg-danger' : ''; ?>">
                                             <?= $data['kelas'] == null ? 'BELUM DIISI' : $data['kelas']; ?>
                                         </td>
-                                        <td class="<?= $data['jurusan'] == null ? 'bg-danger' : ''; ?>">
-                                            <?= $data['jurusan'] == null ? 'BELUM DIISI' : $data['jurusan'];; ?>
+                                        <td class="<?= $data['seleksi'] == null ? 'bg-danger' : ''; ?>">
+                                            <?= $data['seleksi'] == null ? 'BELUM DIISI' : $data['seleksi'];; ?>
                                         </td>
                                     </tr>
                             <?php
-                                        if ($data['kelas'] == null || $data['jurusan'] == null) {
+                                        if ($data['kelas'] == null || $data['seleksi'] == null) {
                                             $status = false;
                                         }
                                     endforeach;
@@ -81,7 +81,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="jurusanId">
+<div class="modal fade" id="seleksiId">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -90,16 +90,16 @@
                 <h4 class="modal-title">Data Jurusan</h4>
             </div>
             <div class="modal-body">
-                <table id="jurusan" class="table table-condensed table-striped">
+                <table id="seleksi" class="table table-condensed table-striped">
                     <thead>
                         <th>ID</th>
                         <th>Jurusan</th>
                     </thead>
                     <tbody>
-                        <?php foreach ($jurusan as $j) : ?>
+                        <?php foreach ($seleksi as $j) : ?>
                             <tr>
-                                <td><?= $j->id_jurusan; ?></td>
-                                <td><?= $j->nama_jurusan; ?></td>
+                                <td><?= $j->id_seleksi; ?></td>
+                                <td><?= $j->nama_seleksi; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -112,7 +112,7 @@
 <script>
     $(document).ready(function() {
         let table;
-        table = $("#jurusan").DataTable({
+        table = $("#seleksi").DataTable({
             "lengthMenu": [
                 [5, 10, 25, 50, 100, -1],
                 [5, 10, 25, 50, 100, "All"]

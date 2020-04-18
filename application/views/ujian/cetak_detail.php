@@ -74,7 +74,7 @@ Dolore distinctio, at consequuntur magnam cupiditate voluptate hic ratione ea il
         <th>Nama Ujian</th>
         <td>{$ujian->nama_ujian}</td>
         <th>Mata Kuliah</th>
-        <td>{$ujian->nama_matkul}</td> 
+        <td>{$ujian->nama_mataujian}</td> 
     </tr>
     <tr>
         <th>Jumlah Soal</th>
@@ -126,7 +126,7 @@ $html .= <<<EOD
         <td align="center" width="5%">{$no}</td>
         <td width="35%">{$row->nama}</td>
         <td width="15%">{$row->nama_kelas}</td>
-        <td width="25%">{$row->nama_jurusan}</td>
+        <td width="25%">{$row->nama_seleksi}</td>
         <td width="10%">{$row->jml_benar}</td>
         <td width="10%">{$row->nilai}</td>
     </tr>

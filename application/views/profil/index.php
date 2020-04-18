@@ -27,7 +27,7 @@
         <tbody>
             <tr>
                 <td>Username</td>
-                <td><?= $profil->nim ?></td>
+                <td><?= $profil->username ?></td>
             </tr>
             <tr>
                 <td>E-mail</td>

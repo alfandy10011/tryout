@@ -33,11 +33,11 @@ class Soal extends CI_Controller {
         ];
         
         if($this->ion_auth->is_admin()){
-            //Jika admin maka tampilkan semua matkul
-            $data['matkul'] = $this->master->getAllMatkul();
+            //Jika admin maka tampilkan semua mataujian
+            $data['mataujian'] = $this->master->getAllMatkul();
         }else{
-            //Jika bukan maka matkul dipilih otomatis sesuai matkul dosen
-            $data['matkul'] = $this->soal->getMatkulDosen($user->username);
+            //Jika bukan maka mataujian dipilih otomatis sesuai mataujian dosen
+            $data['mataujian'] = $this->soal->getMatkulDosen($user->username);
         }
 
 		$this->load->view('_templates/dashboard/_header.php', $data);
@@ -70,10 +70,10 @@ class Soal extends CI_Controller {
         ];
 
         if($this->ion_auth->is_admin()){
-            //Jika admin maka tampilkan semua matkul
+            //Jika admin maka tampilkan semua mataujian
             $data['dosen'] = $this->soal->getAllDosen();
         }else{
-            //Jika bukan maka matkul dipilih otomatis sesuai matkul dosen
+            //Jika bukan maka mataujian dipilih otomatis sesuai mataujian dosen
             $data['dosen'] = $this->soal->getMatkulDosen($user->username);
         }
 
@@ -125,10 +125,10 @@ class Soal extends CI_Controller {
         ];
         
         if($this->ion_auth->is_admin()){
-            //Jika admin maka tampilkan semua matkul
+            //Jika admin maka tampilkan semua mataujian
             $data['dosen'] = $this->soal->getAllDosen();
         }else{
-            //Jika bukan maka matkul dipilih otomatis sesuai matkul dosen
+            //Jika bukan maka mataujian dipilih otomatis sesuai mataujian dosen
             $data['dosen'] = $this->soal->getMatkulDosen($user->username);
         }
 
@@ -244,10 +244,10 @@ class Soal extends CI_Controller {
                 $pecah = $this->input->post('dosen_id', true);
                 $pecah = explode(':', $pecah);
                 $data['dosen_id'] = $pecah[0];
-                $data['matkul_id'] = end($pecah);
+                $data['mataujian_id'] = end($pecah);
             }else{
                 $data['dosen_id'] = $this->input->post('dosen_id', true);
-                $data['matkul_id'] = $this->input->post('matkul_id', true);
+                $data['mataujian_id'] = $this->input->post('mataujian_id', true);
             }
 
             if($method==='add'){

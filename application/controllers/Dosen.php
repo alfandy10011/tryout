@@ -46,7 +46,7 @@ class Dosen extends CI_Controller
 			'user' => $this->ion_auth->user()->row(),
 			'judul'	=> 'Tambah Judul Tryout',
 			'subjudul' => 'Tambah Data Judul Tryout',
-			'matkul'	=> $this->master->getAllMatkul()
+			'mata'	=> $this->master->getAllMatkul()
 		];
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('master/dosen/add');
@@ -59,7 +59,7 @@ class Dosen extends CI_Controller
 			'user' 		=> $this->ion_auth->user()->row(),
 			'judul'		=> 'Edit Judul Tryout',
 			'subjudul'	=> 'Edit Data Judul Tryout',
-			'matkul'	=> $this->master->getAllMatkul(),
+			'mataujian'	=> $this->master->getAllMatkul(),
 			'data' 		=> $this->master->getDosenById($id)
 		];
 		$this->load->view('_templates/dashboard/_header.php', $data);
@@ -74,7 +74,7 @@ class Dosen extends CI_Controller
 		$nip 		= $this->input->post('nip', true);
 		$nama_dosen = $this->input->post('nama_dosen', true);
 		$email 		= $this->input->post('email', true);
-		$matkul 	= $this->input->post('matkul', true);
+		$mataujian 	= $this->input->post('mataujian', true);
 		if ($method == 'add') {
 			$u_nip = '|is_unique[dosen.nip]';
 			$u_email = '|is_unique[dosen.email]';
@@ -86,7 +86,7 @@ class Dosen extends CI_Controller
 		$this->form_validation->set_rules('nip', 'ID', 'required|numeric|trim|min_length[8]|max_length[12]' . $u_nip);
 		$this->form_validation->set_rules('nama_dosen', 'Nama Judul Ujian', 'required|trim|min_length[3]|max_length[50]');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email' . $u_email);
-		$this->form_validation->set_rules('matkul', 'Mata Ujian', 'required');
+		$this->form_validation->set_rules('mataujian', 'Mata Ujian', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$data = [
@@ -95,7 +95,7 @@ class Dosen extends CI_Controller
 					'nip' => form_error('nip'),
 					'nama_dosen' => form_error('nama_dosen'),
 					'email' => form_error('email'),
-					'matkul' => form_error('matkul'),
+					'mataujian' => form_error('mataujian'),
 				]
 			];
 			$this->output_json($data);
@@ -104,7 +104,7 @@ class Dosen extends CI_Controller
 				'nip'			=> $nip,
 				'nama_dosen' 	=> $nama_dosen,
 				'email' 		=> $email,
-				'matkul_id' 	=> $matkul
+				'mataujian_id' 	=> $mataujian
 			];
 			if ($method === 'add') {
 				$action = $this->master->create('dosen', $input);
@@ -175,7 +175,7 @@ class Dosen extends CI_Controller
 			'user' => $this->ion_auth->user()->row(),
 			'judul'	=> 'Dosen',
 			'subjudul' => 'Import Data Dosen',
-			'matkul' => $this->master->getAllMatkul()
+			'mataujian' => $this->master->getAllMatkul()
 		];
 		if ($import_data != null) $data['import'] = $import_data;
 
@@ -223,7 +223,7 @@ class Dosen extends CI_Controller
 					'nip' => $sheetData[$i][0],
 					'nama_dosen' => $sheetData[$i][1],
 					'email' => $sheetData[$i][2],
-					'matkul_id' => $sheetData[$i][3]
+					'mataujian_id' => $sheetData[$i][3]
 				];
 			}
 
@@ -242,7 +242,7 @@ class Dosen extends CI_Controller
 				'nip' => $d->nip,
 				'nama_dosen' => $d->nama_dosen,
 				'email' => $d->email,
-				'matkul_id' => $d->matkul_id
+				'mataujian_id' => $d->mataujian_id
 			];
 		}
 

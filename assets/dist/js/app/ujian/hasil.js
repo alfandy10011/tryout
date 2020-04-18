@@ -50,7 +50,7 @@ $(document).ready(function() {
         searchable: false
       },
       { data: "nama_ujian" },
-      { data: "nama_matkul" },
+      { data: "nama_mataujian" },
       { data: "nama_dosen" },
       { data: "jumlah_soal" },
       { data: "waktu" },

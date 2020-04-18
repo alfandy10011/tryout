@@ -78,7 +78,7 @@ $(document).ready(function() {
         render: function(data, type, row, meta) {
           return `<div class="text-center">
 									<a href="${base_url}kelasdosen/edit/${data}" class="btn btn-warning btn-xs">
-										<i class="fa fa-pencil"></i>
+										Edit
 									</a>
 								</div>`;
         }

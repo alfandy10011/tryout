@@ -9,7 +9,7 @@
     <div class="col-sm-3">
         <div class="alert bg-blue">
             <h4>Tipe Ujian<i class="pull-right fa fa-graduation-cap"></i></h4>
-            <span class="d-block"> <?=$mhs->nama_jurusan?></span>
+            <span class="d-block"> <?=$mhs->nama_seleksi?></span>
         </div>
     </div>
     <div class="col-sm-3">
@@ -109,7 +109,7 @@
 
         <?php if($u->selesai) : ?>
             <a href="<?= base_url('ujian/lihat_hasil/'.$u->id_ujian) ?>" class="btn btn-success btn-sm">Lihat Hasil</a>
-            <a href="<?= base_url('ujian/pembahasan/'.$u->matkul_id) ?>" class="btn btn-info btn-sm">Lihat Pembahasan</a>
+            <a href="<?= base_url('ujian/pembahasan/'.$u->mataujian_id) ?>" class="btn btn-info btn-sm">Lihat Pembahasan</a>
         <?php elseif ($u->ada > 0): ?>
             <a href="<?= base_url('ujian/index/'.$u->id_ujian) ?>" class="btn btn-info btn-sm">Lanjutkan</a>
         <?php else: ?>

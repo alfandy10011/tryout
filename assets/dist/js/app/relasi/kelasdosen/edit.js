@@ -33,7 +33,7 @@ $(document).ready(function () {
                     if (data.errors) {
                         let j;
                         $.each(data.errors, function (key, val) {
-                            j = key.substring(0, 6) == 'matkul' ? $('[name="' + key + '[]"]') : $('[name="' + key + '"]');
+                            j = key.substring(0, 6) == 'mataujian' ? $('[name="' + key + '[]"]') : $('[name="' + key + '"]');
                             j.closest('.form-group').addClass('has-error');
                             j.nextAll('.help-block').eq(0).text(val);
                             if (val == '') {

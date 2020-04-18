@@ -109,8 +109,8 @@ class HasilUjian extends CI_Controller
   {
 
     $mhs   = $this->ujian->getIdMahasiswa($this->user->username);
-    $hasil   = $this->ujian->getEvaluasiHasil($id, $mhs->id_mahasiswa)->row();
-    $pilihan = $this->ujian->getPrediksiKelulusan($mhs->id_mahasiswa)->row();
+    $hasil   = $this->ujian->getEvaluasiHasil($id, $mhs->id_member)->row();
+    $pilihan = $this->ujian->getPrediksiKelulusan($mhs->id_member)->row();
     $pilihan_1 = $pilihan->pilihan_1;
     $pilihan_2 = $pilihan->pilihan_2;
     $pilihan_3 = $pilihan->pilihan_3;
@@ -156,7 +156,7 @@ class HasilUjian extends CI_Controller
     $this->load->library('Pdf');
 
     $mhs   = $this->ujian->getIdMahasiswa($this->user->username);
-    $hasil   = $this->ujian->HslUjian($id, $mhs->id_mahasiswa)->row();
+    $hasil   = $this->ujian->HslUjian($id, $mhs->id_member)->row();
     $ujian   = $this->ujian->getUjianById($id);
 
     $data = [

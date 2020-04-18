@@ -52,7 +52,7 @@ $(document).ready(function() {
       { data: "nip" },
       { data: "nama_dosen" },
       { data: "email" },
-      { data: "nama_matkul" }
+      { data: "nama_mataujian" }
     ],
     columnDefs: [
       {
