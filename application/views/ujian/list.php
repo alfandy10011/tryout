@@ -103,12 +103,11 @@
       <div class="card animated fadeIn fast" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title text-primary"><?= $u->nama_ujian ?></h5>
-          <p class="card-text">Token : <strong><?= $u->token ?></strong></p>
           <p class="card-text">Jumlah Soal : <strong><?= $u->jumlah_soal ?></strong></p>
           <p class="card-text">Waktu : <strong><?= $u->waktu ?> Menit</strong></p>
 
           <?php if ($u->id_hasil_ujian == null) : ?>
-            <a href="<?= base_url('ujian/token/' . $u->id_ujian) ?>" class="btn btn-primary btn-sm">Kerjakan</a>
+            <a href="<?= base_url('ujian/index/' . $u->id_ujian) ?>" class="btn btn-primary btn-sm">Kerjakan</a>
           <?php elseif (!$u->selesai) : ?>
             <a href="<?= base_url('ujian/index/' . $u->id_ujian) ?>" class="btn btn-info btn-sm">Lanjutkan</a>
           <?php else : ?>

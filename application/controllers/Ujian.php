@@ -250,9 +250,6 @@ class Ujian extends CI_Controller
     $user = $this->ion_auth->user()->row();
     $member = $this->ujian->getIdMahasiswa($user->username);
 
-    // var_dump($ujian);
-    // die();
-
     $data = [
       'user'     => $user,
       'judul'    => 'Tryout',
@@ -339,42 +336,6 @@ class Ujian extends CI_Controller
     $this->load->view('_templates/dashboard/_header.php', $data);
     $this->load->view('ujian/pembahasan', $data);
     $this->load->view('_templates/dashboard/_footer.php');
-  }
-
-  public function token($id)
-  {
-    $this->akses_member();
-    $user = $this->ion_auth->user()->row();
-
-    $data = [
-      'user'     => $user,
-      'judul'    => 'Ujian',
-      'subjudul'  => 'Token Ujian',
-      'mhs'     => $this->ujian->getIdMahasiswa($user->username),
-      'ujian'    => $this->ujian->getUjianById($id),
-      'ujian_id' => $id,
-    ];
-    $this->load->view('_templates/topnav/_header.php', $data);
-    $this->load->view('ujian/token');
-    $this->load->view('_templates/topnav/_footer.php');
-  }
-
-  public function cektoken()
-  {
-    $id = $this->input->post('id_ujian', true);
-    $token = $this->input->post('token', true);
-    $cek = $this->ujian->getUjianById($id);
-
-    $data['status'] = $token === $cek->token ? TRUE : FALSE;
-    $this->output_json($data);
-  }
-
-  public function encrypt()
-  {
-    $id = $this->input->post('id', true);
-    $key = urlencode($this->encryption->encrypt($id));
-    // $decrypted = $this->encryption->decrypt(rawurldecode($key));
-    $this->output_json(['key' => $key]);
   }
 
   public function index($id)

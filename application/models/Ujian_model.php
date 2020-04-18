@@ -20,7 +20,6 @@ class Ujian_model extends CI_Model
     $this->db->select("
           m_ujian.mataujian_id,
           m_ujian.id_ujian,
-          m_ujian.token,
           m_ujian.nama_ujian,
           m_ujian.tryout_id,
           m_ujian.jumlah_soal,
