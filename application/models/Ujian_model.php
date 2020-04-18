@@ -15,7 +15,7 @@ class Ujian_model extends CI_Model
     return $this->datatables->generate();
   }
 
-  public function getListUjian($id, $kelas, $id_tryout)
+  public function getListUjian($id_member, $kelas, $id_tryout)
   {
     $this->db->select("
           m_ujian.mataujian_id,
@@ -24,10 +24,11 @@ class Ujian_model extends CI_Model
           m_ujian.nama_ujian,
           m_ujian.tryout_id,
           m_ujian.jumlah_soal,
+          m_ujian.waktu,
           mataujian.nama_mataujian,
           dosen.nama_dosen,
           kelas.nama_kelas,
-          CONCAT(m_ujian.tgl_mulai, ' <br/> (', m_ujian.waktu, ' Menit)') as waktu,  (SELECT COUNT(id) FROM h_ujian WHERE h_ujian.member_id = {$id} AND h_ujian.ujian_id = m_ujian.id_ujian) AS ada,
+          h_ujian.id as id_hasil_ujian,
           h_ujian.selesai,
           ");
 
@@ -36,7 +37,7 @@ class Ujian_model extends CI_Model
     $this->db->join('kelas_dosen', "m_ujian.dosen_id = kelas_dosen.dosen_id");
     $this->db->join('kelas', 'kelas_dosen.kelas_id = kelas.id_kelas');
     $this->db->join('dosen', 'dosen.id_dosen = kelas_dosen.dosen_id');
-    $this->db->join('h_ujian', 'm_ujian.id_ujian = h_ujian.ujian_id', 'left');
+    $this->db->join('h_ujian', "m_ujian.id_ujian = h_ujian.ujian_id AND h_ujian.member_id = {$id_member}", 'left');
     $this->db->where('kelas.id_kelas', $kelas);
     $this->db->where('m_ujian.tryout_id', $id_tryout);
     return $this->db->get()->result();

@@ -228,7 +228,6 @@ class Ujian extends CI_Controller
     $this->output_json($this->ujian->HslUjianByIdTryout($id, true), false);
   }
 
-  //? TODO "daftar" ini ambigu. Daftar = mendaftar, atau daftar = kumpulan isi
   public function daftar_to()
   {
     $data = [
@@ -250,6 +249,9 @@ class Ujian extends CI_Controller
     $ujian = $this->ujian->getListUjian($this->mhs->id_member, $this->mhs->kelas_id, $id);
     $user = $this->ion_auth->user()->row();
     $member = $this->ujian->getIdMahasiswa($user->username);
+
+    // var_dump($ujian);
+    // die();
 
     $data = [
       'user'     => $user,
