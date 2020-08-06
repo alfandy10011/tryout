@@ -598,12 +598,21 @@ class Ujian extends CI_Controller
     }
 
     // Perhitungan Skor
-
+/* Skoring STAN ver 
     $nilai = (($jumlah_benar) * 4) - $jumlah_salah;
     $nilai_tbi = $jumlah_benar * 5;
     $nilai_twk = $jumlah_benar * 5;
     $nilai_tiu = $jumlah_benar * 5;
     $nilai_bobot = ($total_bobot / $jumlah_soal)  * 100;
+*/
+
+
+// Skoring UTBK
+
+$nilai = $jumlah_benar * 1;
+$nilai_tkpa = $jumlah_benar;
+$nilai_tkd = $jumlah_benar;
+$nilai_bobot = ($total_bobot/ $jumlah_soal) *100;
 
     $d_update = [
       'jml_benar'    => $jumlah_benar,
