@@ -17,7 +17,7 @@
                         <small class="help-block"></small>
                     </div>
                     <div class="form-group">
-                        <label for="nama">Nama</label>
+                        <label for="nama">Nama Lengkap</label>
                         <input placeholder="Nama" type="text" name="nama" class="form-control">
                         <small class="help-block"></small>
                     </div>
