@@ -67,35 +67,10 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="pil_1">Pilihan 1</label>
-      <select class="form-control" id="pil_1" name="pil_1">
-        <?php
-        foreach ($profil as $p) {
-          echo '<option value="' . $p->id_prodi . '">' . $p->nama_prodi . '</option>';
-        }
-        ?>
-      </select>
-      <small class="help-block"></small>
-    </div>
-    <div class="form-group">
-      <label for="pil_2">Pilihan 2</label>
-      <select class="form-control" id="pil_2" name="pil_2">
-        <?php
-        foreach ($profil as $p) {
-          echo '<option value="' . $p->id_prodi . '">' . $p->nama_prodi . '</option>';
-        }
-        ?>
-      </select>
-      <small class="help-block"></small>
-    </div>
-    <div class="form-group">
-      <label for="pil_2">Pilihan 3</label>
-      <select class="form-control" id="pil_2" name="pil_3">
-        <?php
-        foreach ($profil as $p) {
-          echo '<option value="' . $p->id_prodi . '">' . $p->nama_prodi . '</option>';
-        }
-        ?>
+      <label for="jurusan">Jurusan</label>
+      <select class="form-control" id="jurusan" name="jurusan">
+        <option value="1">SAINTEK</option>
+        <option value="2">SOSHUM</option>
       </select>
       <small class="help-block"></small>
     </div>
