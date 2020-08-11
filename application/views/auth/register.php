@@ -66,39 +66,6 @@
         <input type="password" class="input" name="password_confirmation" value="<?= set_value('password_confirmation') ?>">
       </div>
     </div>
-    <div class="form-group">
-      <label for="pil_1">Pilihan 1</label>
-      <select class="form-control" id="pil_1" name="pil_1">
-        <?php
-        foreach ($profil as $p) {
-          echo '<option value="' . $p->id_prodi . '">' . $p->nama_prodi . '</option>';
-        }
-        ?>
-      </select>
-      <small class="help-block"></small>
-    </div>
-    <div class="form-group">
-      <label for="pil_2">Pilihan 2</label>
-      <select class="form-control" id="pil_2" name="pil_2">
-        <?php
-        foreach ($profil as $p) {
-          echo '<option value="' . $p->id_prodi . '">' . $p->nama_prodi . '</option>';
-        }
-        ?>
-      </select>
-      <small class="help-block"></small>
-    </div>
-    <div class="form-group">
-      <label for="pil_2">Pilihan 3</label>
-      <select class="form-control" id="pil_2" name="pil_3">
-        <?php
-        foreach ($profil as $p) {
-          echo '<option value="' . $p->id_prodi . '">' . $p->nama_prodi . '</option>';
-        }
-        ?>
-      </select>
-      <small class="help-block"></small>
-    </div>
     <?= form_submit('submit', 'Daftar', array('id' => 'register_submit', 'class' => 'btn btn-primary btn-block btn-flat')); ?>
     <?= form_close(); ?>
   </div>

@@ -6,13 +6,13 @@
                 <h5 class="card-title">Nama : <?= $profil->nama ?></h5>
             </div>
             <div class="card-body">
-                <p class="text-center">Status : 
-                
+                <p class="text-center">Status :
+
                 <?php if($profil->kelas_id == "1" ) : ?>
                     <strong>FREE</strong>
                 <?php else : ?>
                     <strong>PREMIUM</strong>
-                <?php endif; ?>        
+                <?php endif; ?>
                  </p>
             </div>
         </div>
@@ -40,18 +40,6 @@
             <tr>
                 <td>Sekolah</td>
                 <td><?= $profil->sekolah ?></td>
-            </tr>
-            <tr>
-                <td>Pilihan 1</td>
-                <td><?= $pilihan_1 ?></td>
-            </tr>
-            <tr>
-                <td>Pilihan 2</td>
-                <td><?= $pilihan_2 ?></td>
-            </tr>
-            <tr>
-                <td>Pilihan 3</td>
-                <td><?= $pilihan_3 ?></td>
             </tr>
         </tbody>
         </table>

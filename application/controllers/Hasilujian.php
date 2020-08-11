@@ -115,18 +115,18 @@ class HasilUjian extends CI_Controller
     $pilihan_2 = $pilihan->pilihan_2;
     $pilihan_3 = $pilihan->pilihan_3;
 
-    // Passing Grade
-    $pg_1 = $this->ujian->getPassingGrade($pilihan_1)->row();
-    $pg_2 = $this->ujian->getPassingGrade($pilihan_2)->row();
-    $pg_3 = $this->ujian->getPassingGrade($pilihan_3)->row();
-    $cek_pg_1 = $pg_1->passing_grade;
-    $cek_pg_2 = $pg_2->passing_grade;
-    $cek_pg_3 = $pg_3->passing_grade;
+    // // Passing Grade
+    // $pg_1 = $this->ujian->getPassingGrade($pilihan_1)->row();
+    // $pg_2 = $this->ujian->getPassingGrade($pilihan_2)->row();
+    // $pg_3 = $this->ujian->getPassingGrade($pilihan_3)->row();
+    // $cek_pg_1 = $pg_1->passing_grade;
+    // $cek_pg_2 = $pg_2->passing_grade;
+    // $cek_pg_3 = $pg_3->passing_grade;
 
-    // Show Nama
-    $get_nama1 = $this->ujian->showProdiPilihan($pilihan_1)->nama_prodi;
-    $get_nama2 = $this->ujian->showProdiPilihan($pilihan_2)->nama_prodi;
-    $get_nama3 = $this->ujian->showProdiPilihan($pilihan_3)->nama_prodi;
+    // // Show Nama
+    // $get_nama1 = $this->ujian->showProdiPilihan($pilihan_1)->nama_prodi;
+    // $get_nama2 = $this->ujian->showProdiPilihan($pilihan_2)->nama_prodi;
+    // $get_nama3 = $this->ujian->showProdiPilihan($pilihan_3)->nama_prodi;
 
     $data = [
       'user'  => $this->ion_auth->user()->row(),
@@ -134,15 +134,6 @@ class HasilUjian extends CI_Controller
       'subjudul'  => '',
       'hasil' => $hasil,
       'mhs'  => $mhs,
-      'pilihan_1'  => $pilihan_1,
-      'pilihan_2'  => $pilihan_2,
-      'pilihan_3'  => $pilihan_3,
-      'cek_pg_1'  => $cek_pg_1,
-      'cek_pg_2'  => $cek_pg_2,
-      'cek_pg_3'  => $cek_pg_3,
-      'get_nama1'  => $get_nama1,
-      'get_nama2'  => $get_nama2,
-      'get_nama3'  => $get_nama3,
     ];
 
     $this->load->view('_templates/dashboard/_header.php', $data);
