@@ -96,18 +96,6 @@
                     <th>Asal Sekolah</th>
                     <td><?=$member->sekolah?></td>
                 </tr>
-                <tr>
-                    <th>Pilihan 1</th>
-                    <td><?=$pilihan_1?></td>
-                </tr>
-                <tr>
-                    <th>Pilihan 2</th>
-                    <td><?=$pilihan_2?></td>
-                </tr>
-                <tr>
-                    <th>Pilihan 3</th>
-                    <td><?=$pilihan_3?></td>
-                </tr>
             </table>
         </div>
     </div>
@@ -117,15 +105,11 @@
                 <h3 class="box-title">Petunjuk Pengerjaan Tryout</h3>
             </div>
             <div class="card-body">
-                <p>Petunjuk teknis pengerjaan Tryout SPMB PKN STAN</p>
+                <p>Petunjuk teknis pengerjaan Tryout UTBK</p>
                 <ul class="pl-4">
-                    <li>Jenis Ujian terdiri dari TPA, TBI, SKD (TWK, TIU, TKP)</li>
-                    <li>TPA (Test Potensi Akademik) waktu pengerjaan 40 menit dengan 45 butir soal. Benar +4 Salah -1 Ambang Batas 67 </li>
-                    <li>TBI (Test Bahasa Inggris) waktu pengerjaan 20 menit dengan 30 butir soal. Benar +5 Salah -0 Ambang Batas 30</li>
-                    <l1>SKD Terdiri dari TWK, TIU, dan TKP dengan waktu pengerjaan 90 menit </li>
-                    <li>TWK (Test Wawasan Kebangsaan) 35 butir soal. Benar +5 Salah -0 Ambang Batas 75</li>
-                    <li>TIU (Test Intelegensia Umum) 30 butir soal. Benar +5 Salah -0 Ambang Batas 80</li>
-                    <li>TKP (Test Karakteristik Pribadi) 35 butir soal. Nilai terendah 1 dan tertinggi 5 Ambang Batas 143</li>
+                    <li>Jenis Ujian terdiri dari TPA,TKD</li>
+                    <li>TPA (Test Potensi Akademik) waktu pengerjaan 40 menit dengan 45 butir soal. Benar +1 Salah 0  </li>
+                    <li>TKD (Test Kompetensi Dasar) waktu pengerjaan 60 menit dengan 500 butir soal. Benar +1 Salah 0 </li>
                 </ul>
             </div>
         </div>

@@ -600,9 +600,7 @@ class Ujian extends CI_Controller
     // Perhitungan Skor
 
     $nilai = (($jumlah_benar) * 4) - $jumlah_salah;
-    $nilai_tbi = $jumlah_benar * 5;
-    $nilai_twk = $jumlah_benar * 5;
-    $nilai_tiu = $jumlah_benar * 5;
+    $nilai_saintek = $jumlah_benar;
     $nilai_bobot = ($total_bobot / $jumlah_soal)  * 100;
 
     $d_update = [
@@ -616,39 +614,16 @@ class Ujian extends CI_Controller
       'selesai' => true
     ];
 
-    $update_tpa = [
-      'nilai_tpa'    => $nilai,
+    $update_saintek = [
+      'nilai_saintek'    => $nilai_saintek,
     ];
 
-    $update_tbi = [
-      'nilai_tbi'    => $nilai_tbi,
-    ];
-
-    $update_twk = [
-      'nilai_twk'    => $nilai_twk,
-    ];
-
-    $update_tiu = [
-      'nilai_tiu'    => $nilai_tiu,
-    ];
-
-    $update_tkp = [
-      'nilai_tkp'    => $poin_tkp,
-    ];
 
     // $validasi_nama = $cek_nama->nama_ujian;
 
     // Input TPA
-    if ($validasi_nama == "TPA" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_tpa, 'id_member', $mhs);
-    } else if ($validasi_nama == "TBI" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_tbi, 'id_member', $mhs);
-    } else if ($validasi_nama == "TWK" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_twk, 'id_member', $mhs);
-    } else if ($validasi_nama == "TIU" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_tiu, 'id_member', $mhs);
-    } else if ($validasi_nama == "TKP" . $ambil_id_to) {
-      $this->master->update('h_tryout', $update_tkp, 'id_member', $mhs);
+    if ($validasi_nama == "SAINTEK" . $ambil_id_to) {
+      $this->master->update('h_tryout', $update_saintek, 'id_member', $mhs);
     }
 
 

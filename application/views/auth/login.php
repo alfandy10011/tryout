@@ -27,7 +27,6 @@
         <input type="password" class="input" name="password">
       </div>
     </div>
-    <a href='<?php echo site_url('auth/register') ?>'>Daftar</a>
     <a href="<?= base_url('auth/forgot_password') ?>">Lupa Kata Sandi?</a>
     <?= form_submit('submit', lang('login_submit_btn'), array('id' => 'submit', 'class' => 'btn btn-primary btn-block btn-flat')); ?>
     <?= form_close(); ?>

@@ -29,16 +29,10 @@ $(document).ready(function () {
                 "searchable": false
             },
             { "data": 'nama' },
-            { "data": 'nilai_tpa' },
-            { "data": 'nilai_tbi' },
             { "data": 'nilai_twk' },
-            { "data": 'nilai_tiu' },
-            { "data": 'nilai_tkp' },
-            { "data": 'total_tpa_tbi' },
-            { "data": 'total_skd' },
         ],
         order: [
-            [7, 'desc']
+            [4, 'desc']
         ],
         rowId: function (a) {
             return a;

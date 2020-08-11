@@ -19,10 +19,8 @@ $('form').on('reset', function(){
 $(document).ready(function(){
 	$('.select2').select2();
 
-	$('.froala-editor').froalaEditor({
-		theme: 'royal',
-		quickInsertTags: null,
-		toolbarButtons: ['fullscreen', '|', 'bold', 'italic', 'strikeThrough', 'underline', '|', 'align', 'insertTable', 'insertLink','formatOL', 'formatUL', '|', 'html']
+	$('.summernote').summernote({
+		height: 100
 	});
 
 	setInterval(function() {
