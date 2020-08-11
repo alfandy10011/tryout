@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-    <div class="col-sm-12">    
+    <div class="col-sm-12">
         <?=form_open_multipart('soal/save', array('id'=>'formsoal'), array('method'=>'add'));?>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -24,7 +24,7 @@
                             <input type="text" readonly="readonly" class="form-control" value="<?=$dosen->nama_dosen; ?> (<?=$dosen->nama_mataujian; ?>)">
                             <?php endif; ?>
                         </div>
-                        
+
                         <div class="col-sm-12">
                             <label for="soal" class="control-label">Soal</label>
                             <div class="form-group">
@@ -32,16 +32,16 @@
                                 <small class="help-block" style="color: #dc3545"><?=form_error('file_soal')?></small>
                             </div>
                             <div class="form-group">
-                                <textarea name="soal" id="soal" class="form-control froala-editor"><?=set_value('soal')?></textarea>
+                                <textarea name="soal" class="form-control summernote"><?=set_value('soal')?></textarea>
                                 <small class="help-block" style="color: #dc3545"><?=form_error('soal')?></small>
                             </div>
                         </div>
-                        
-                        <!-- 
-                            Membuat perulangan A-E 
+
+                        <!--
+                            Membuat perulangan A-E
                         -->
                         <?php
-                        $abjad = ['a', 'b', 'c', 'd', 'e']; 
+                        $abjad = ['a', 'b', 'c', 'd', 'e'];
                         foreach ($abjad as $abj) :
                             $ABJ = strtoupper($abj); // Abjad Kapital
                         ?>
@@ -53,7 +53,7 @@
                                 <small class="help-block" style="color: #dc3545"><?=form_error('file_'.$abj)?></small>
                             </div>
                             <div class="form-group">
-                                <textarea name="jawaban_<?= $abj; ?>" id="jawaban_<?= $abj; ?>" class="form-control froala-editor"><?=set_value('jawaban_a')?></textarea>
+                                <textarea name="jawaban_<?= $abj; ?>" id="jawaban_<?= $abj; ?>" class="form-control summernote"><?=set_value('jawaban_a')?></textarea>
                                 <small class="help-block" style="color: #dc3545"><?=form_error('jawaban_'.$abj)?></small>
                             </div>
                             <div class="form-group">
@@ -74,7 +74,7 @@
                                 <option value="C">C</option>
                                 <option value="D">D</option>
                                 <option value="E">E</option>
-                            </select>                
+                            </select>
                             <small class="help-block" style="color: #dc3545"><?=form_error('jawaban')?></small>
                         </div>
                         <div class="form-group col-sm-12">
@@ -85,7 +85,7 @@
                         <div class="col-sm-12">
                             <label for="pembahasan" class="control-label">Pembahasan</label>
                             <div class="form-group">
-                                <textarea name="pembahasan" id="pembahasan" class="form-control froala-editor"><?=set_value('soal')?></textarea>
+                                <textarea name="pembahasan" id="pembahasan" class="form-control summernote"><?=set_value('soal')?></textarea>
                                 <small class="help-block" style="color: #dc3545"><?=form_error('pembahasan')?></small>
                             </div>
                         </div>

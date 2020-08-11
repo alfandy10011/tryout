@@ -15,7 +15,8 @@
 			</div>
 
 			<!-- Required JS -->
-			<script src="<?= base_url() ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 			<script src="<?= base_url() ?>assets/bower_components/datatables.net-bs/js/jquery.dataTables.min.js"></script>
 			<script src="<?= base_url() ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap4.min.js"></script>
 
@@ -35,9 +36,10 @@
 			<script src="<?= base_url() ?>assets/bower_components/codemirror/lib/codemirror.min.js"></script>
 			<script src="<?= base_url() ?>assets/bower_components/codemirror/mode/xml.min.js"></script>
 			<script src="<?= base_url() ?>assets/bower_components/froala_editor/js/froala_editor.pkgd.min.js"></script>
+			<script src="<?=base_url()  ?>assets/bower_components/summernote-0.8.16-dist/summernote-bs4.min.js"></script>
 
 			<!-- App JS -->
-			<script src="<?= base_url() ?>assets/dist/js/sb-admin-2.min.js"></script>
+			<script src="<?= base_url() ?>assets/dist/js/sb-admin-2.js"></script>
 			<script src="<?= base_url() ?>assets/bower_components/jquery-easing/jquery.easing.min.js"></script>
 			<script src="<?= base_url() ?>assets/dist/js/app/dashboard.js"></script>
 

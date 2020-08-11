@@ -74,18 +74,18 @@ class Dashboard extends CI_Controller
 			$pilihan_3 = $pilihan->pilihan_3;
 
 			// Show Nama
-			$get_nama1 = $this->ujian->showProdiPilihan($pilihan_1)->nama_prodi;
-			$get_nama2 = $this->ujian->showProdiPilihan($pilihan_2)->nama_prodi;
-			$get_nama3 = $this->ujian->showProdiPilihan($pilihan_3)->nama_prodi;
+			// $get_nama1 = $this->ujian->showProdiPilihan($pilihan_1)->nama_prodi;
+			// $get_nama2 = $this->ujian->showProdiPilihan($pilihan_2)->nama_prodi;
+			// $get_nama3 = $this->ujian->showProdiPilihan($pilihan_3)->nama_prodi;
 
 			$join = [
 				'kelas b' 	=> 'a.kelas_id = b.id_kelas',
 				'seleksi c'	=> 'b.seleksi_id = c.id_seleksi'
 			];
 			$data['member'] = $this->dashboard->get_where('member a', 'username', $user->username, $join)->row();
-			$data['pilihan_1'] = $get_nama1;
-			$data['pilihan_2'] = $get_nama2;
-			$data['pilihan_3'] = $get_nama3;
+			// $data['pilihan_1'] = $get_nama1;
+			// $data['pilihan_2'] = $get_nama2;
+			// $data['pilihan_3'] = $get_nama3;
 		}
 
 		$this->load->view('_templates/dashboard/_header.php', $data);

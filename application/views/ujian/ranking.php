@@ -10,25 +10,19 @@
             <tr>
                 <th>No.</th>
                 <th>Nama</th>
-                <th>TPA</th>
-                <th>TBI</th>
                 <th>TWK</th>
                 <th>TIU</th>
                 <th>TKP</th>
-                <th>TOTAL TPA TBI</th>
                 <th>TOTAL SKD</th>
-            </tr>        
+            </tr>
         </thead>
         <tfoot>
             <tr>
                 <th>No.</th>
                 <th>Nama</th>
-                <th>TPA</th>
-                <th>TBI</th>
                 <th>TWK</th>
                 <th>TIU</th>
                 <th>TKP</th>
-                <th>TOTAL TPA TBI</th>
                 <th>TOTAL SKD</th>
             </tr>
         </tfoot>

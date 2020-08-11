@@ -15,42 +15,6 @@
                     <input placeholder="Asal Sekolah" type="text" class="form-control" name="asal_sekolah" value="<?= ($identitas->sekolah) ?>">
                     <small class="help-block"></small>
                 </div>
-                <div class="form-group">
-                    <label for="nama_lengkap">Pilihan 1</label>
-                    <select class="form-control" id="pil_1" name="pil_1">
-                    <?php 
-                    foreach($profil as $p)
-                    { 
-                    echo '<option value="'.$p->id_prodi.'">'.$p->nama_prodi.'</option>';
-                    }
-                    ?>
-                    </select>
-                    <small class="help-block"></small>
-                </div>
-                <div class="form-group">
-                    <label for="nama_lengkap">Pilihan 2</label>
-                    <select class="form-control" id="pil_2" name="pil_2">
-                    <?php 
-                    foreach($profil as $p)
-                    { 
-                    echo '<option value="'.$p->id_prodi.'">'.$p->nama_prodi.'</option>';
-                    }
-                    ?>
-                    </select>
-                    <small class="help-block"></small>
-                </div>
-                <div class="form-group">
-                    <label for="nama_lengkap">Pilihan 3</label>
-                    <select class="form-control" id="pil_3" name="pil_3">
-                    <?php 
-                    foreach($profil as $p)
-                    { 
-                    echo '<option value="'.$p->id_prodi.'">'.$p->nama_prodi.'</option>';
-                    }
-                    ?>
-                    </select>
-                    <small class="help-block"></small>
-                </div>
                 <div class="form-group text-center">
                     <button type="reset" class="btn btn-primary">
                         <i class="fa fa-rotate-left"></i> Reset
